@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import java.time.LocalDate
 
 @Database(entities = [HabitEntity::class, CompletionStatusEntity::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun habitDao() : HabitDao
     abstract fun completionStatusDao() : CompletionStatusDao
@@ -24,5 +28,17 @@ abstract class AppDatabase : RoomDatabase() {
                 return instance
             }
         }
+    }
+}
+
+class Converters {
+    @TypeConverter
+    fun fromLocalDate(date: LocalDate?): String? {
+        return date?.toString()
+    }
+
+    @TypeConverter
+    fun toLocalDate(dateString: String?): LocalDate? {
+        return dateString?.let { LocalDate.parse(it) }
     }
 }

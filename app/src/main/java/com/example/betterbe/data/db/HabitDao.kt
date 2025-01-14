@@ -17,7 +17,7 @@ interface HabitDao {
     fun getHabitById(id: Int): HabitEntity
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addHabit(habitEntity: HabitEntity)
+    suspend fun addHabit(habitEntity: HabitEntity) : HabitEntity
 
     @Update
     suspend fun update(habitEntity: HabitEntity)
