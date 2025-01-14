@@ -11,7 +11,7 @@ class BetterBeeRepository(
     private val habitDao: HabitDao,
     private val completionStatusDao: CompletionStatusDao
 ) {
-    suspend fun addHabit(habit: HabitEntity): HabitEntity {
+    suspend fun addHabit(habit: HabitEntity): Long {
         return habitDao.addHabit(habit)
     }
 
@@ -47,7 +47,7 @@ class BetterBeeRepository(
         return completionStatusDao.getCompletionStatusForDate(habitId, date)
     }
 
-    suspend fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatusEntity>> {
+    fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatusEntity>> {
         return completionStatusDao.getCompletionStatusForHabit(habitId)
     }
 
