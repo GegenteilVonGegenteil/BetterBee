@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.betterbe.ui.components.BottomNavBar
+import com.example.betterbe.ui.home.HomeView
 
 enum class Routes(val route: String) {
     Home("home"),
@@ -38,7 +39,7 @@ fun HabitApp(
         ) {
             composable(Routes.Home.route) {
                 Column(Modifier.padding(innerPadding)) {
-
+                    HomeView(Modifier.padding(innerPadding))
                 }
             }
             composable(Routes.Manager.route) {
