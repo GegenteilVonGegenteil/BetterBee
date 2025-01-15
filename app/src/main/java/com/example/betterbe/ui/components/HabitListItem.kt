@@ -1,19 +1,12 @@
 package com.example.betterbe.ui.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -25,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,7 +47,7 @@ fun HabitListItem(
 
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = colorResource(R.color.bronco_900)
+            containerColor = if(completionStatus.completed) colorResource(R.color.bronco_900) else habitColor
         ),
         modifier = modifier
             .padding(20.dp)
@@ -73,7 +67,8 @@ fun HabitListItem(
                     fontSize = 25.sp,
                     //fontFamily = FontFamily(Font(R.font.jost)),
                     fontWeight = FontWeight(400),
-                    color = habitColor
+                    color = if (completionStatus.completed) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950),
+                    textDecoration = if (completionStatus.completed) TextDecoration.LineThrough else TextDecoration.None
                     )
             )
             IconButton(
@@ -81,9 +76,9 @@ fun HabitListItem(
                 onClick = {  }
             ) {
                 Icon(
-                    imageVector = Icons.Default.CheckCircle,
+                    imageVector =  Icons.Default.CheckCircle,
                     contentDescription = "CheckBox",
-                    tint = habitColor
+                    tint = if (completionStatus.completed) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
                 )
             }
         }
@@ -93,5 +88,5 @@ fun HabitListItem(
 @Preview
 @Composable
 fun CardPreview() {
-    HabitListItem(habit = HabitEntity(0, "name", "red_light"), completionStatus = CompletionStatus(0,0, LocalDate.now(), false), modifier = Modifier)
+    HabitListItem(habit = HabitEntity(0, "name", "red_light"), completionStatus = CompletionStatus(0,0, LocalDate.now(), true), modifier = Modifier)
 }
