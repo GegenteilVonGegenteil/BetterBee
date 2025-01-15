@@ -33,4 +33,8 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
             }
         }
         .asLiveData()
+
+    fun getCompletedHabitsCount(habitsWithStatus: List<Pair<HabitEntity, CompletionStatusEntity?>>): Int {
+        return habitsWithStatus.count { it.second?.completed == true }
+    }
 }

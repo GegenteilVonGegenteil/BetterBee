@@ -28,6 +28,8 @@ fun HomeView(
 ) {
 
     val habitsWithStatus by homeViewModel.habitsWithCompletionStatus.observeAsState(emptyList())
+    val completedCount = homeViewModel.getCompletedHabitsCount(habitsWithStatus)
+    val totalCount = habitsWithStatus.size
 
     Column(modifier = Modifier.fillMaxSize()){
 
@@ -42,7 +44,7 @@ fun HomeView(
             modifier = Modifier.padding(start = 20.dp, top = 30.dp, bottom = 5.dp)
         )
         Text(
-            "(2/5 habits)",
+            "($completedCount/$totalCount habits)",
             style = TextStyle(
                 fontSize = 20.sp,
                 //fontFamily = FontFamily(Font(R.font.jost)),
