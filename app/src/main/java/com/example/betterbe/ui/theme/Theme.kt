@@ -1,6 +1,5 @@
 package com.example.betterbe.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -12,15 +11,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Yellow40,
+    secondary = Yellow40,
+    tertiary = Yellow40,
+    background = Brown80
+    /*
+    surface = Brown80,
+    onPrimary = Brown80,
+    onSecondary = Brown80,
+    onTertiary = Brown80,
+    onBackground = Brown80,
+    onSurface = Brown80
+     */
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
-    tertiary = Pink40
+    tertiary = Pink40,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -52,6 +60,15 @@ fun BetterBeTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}
+
+@Composable
+fun BetterBeeTheme(content: @Composable () -> Unit) {
+    MaterialTheme(
+        colorScheme = DarkColorScheme,
         typography = Typography,
         content = content
     )

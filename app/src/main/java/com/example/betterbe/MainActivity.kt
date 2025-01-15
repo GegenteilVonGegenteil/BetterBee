@@ -13,13 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.betterbe.ui.HabitApp
 import com.example.betterbe.ui.theme.BetterBeTheme
+import com.example.betterbe.ui.theme.BetterBeeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            BetterBeTheme {
+            BetterBeeTheme {
                 HabitApp()
             }
         }
