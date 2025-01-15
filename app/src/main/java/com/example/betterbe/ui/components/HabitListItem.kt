@@ -84,9 +84,3 @@ fun HabitListItem(
         }
     }
 }
-
-@Preview
-@Composable
-fun CardPreview() {
-    HabitListItem(habit = HabitEntity(0, "name", "red_light"), completionStatus = CompletionStatus(0,0, LocalDate.now(), true), modifier = Modifier)
-}
