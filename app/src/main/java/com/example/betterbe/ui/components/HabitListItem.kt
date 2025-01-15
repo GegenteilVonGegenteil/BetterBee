@@ -19,18 +19,16 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
-import com.example.betterbe.data.CompletionStatus
+import com.example.betterbe.data.db.CompletionStatusEntity
 import com.example.betterbe.data.db.HabitEntity
-import java.time.LocalDate
 
 @Composable
 fun HabitListItem(
     habit: HabitEntity,
-    completionStatus: CompletionStatus,
+    completionStatus: CompletionStatusEntity?,
     modifier: Modifier = Modifier
 ) {
     val habitColor = when (habit.color) {
@@ -47,7 +45,7 @@ fun HabitListItem(
 
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = if(completionStatus.completed) colorResource(R.color.bronco_900) else habitColor
+            containerColor = if(completionStatus?.completed == true) colorResource(R.color.bronco_900) else habitColor
         ),
         modifier = modifier
             .padding(20.dp)
@@ -67,8 +65,8 @@ fun HabitListItem(
                     fontSize = 25.sp,
                     //fontFamily = FontFamily(Font(R.font.jost)),
                     fontWeight = FontWeight(400),
-                    color = if (completionStatus.completed) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950),
-                    textDecoration = if (completionStatus.completed) TextDecoration.LineThrough else TextDecoration.None
+                    color = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950),
+                    textDecoration = if (completionStatus?.completed == true) TextDecoration.LineThrough else TextDecoration.None
                     )
             )
             IconButton(
@@ -78,7 +76,7 @@ fun HabitListItem(
                 Icon(
                     imageVector =  Icons.Default.CheckCircle,
                     contentDescription = "CheckBox",
-                    tint = if (completionStatus.completed) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
+                    tint = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
                 )
             }
         }
