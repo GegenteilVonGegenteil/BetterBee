@@ -7,7 +7,7 @@ import com.example.betterbe.data.db.HabitEntity
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
-class BetterBeeRepository(
+class HabitRepository(
     private val habitDao: HabitDao,
     private val completionStatusDao: CompletionStatusDao
 ) {
