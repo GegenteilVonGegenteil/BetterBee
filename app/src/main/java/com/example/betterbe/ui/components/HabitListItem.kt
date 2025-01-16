@@ -27,11 +27,11 @@ import com.example.betterbe.data.db.CompletionStatusEntity
 
 @Composable
 fun HabitListItem(
-    habit: Habit,
+    habit: HabitEntity,
     completionStatus: CompletionStatusEntity?,
     modifier: Modifier = Modifier,
     onCardClick: () -> Unit,
-    onCheckClick: (Habit) -> Unit
+    onCheckClick: (HabitEntity) -> Unit
 ) {
     val habitColor = when (habit.color) {
         "red" -> colorResource(R.color.red_light)
@@ -62,7 +62,7 @@ fun HabitListItem(
 
         ) {
             Text(
-                text = "Drink Water",
+                text = habit.name,
                 style = TextStyle(
                     fontSize = 25.sp,
                     fontWeight = FontWeight(400),

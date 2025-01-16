@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "habits")
 data class HabitEntity(
-    @PrimaryKey
-    val _id: Int,
     val name: String,
-    val color: String
+    val color: String,
+
+    @PrimaryKey(autoGenerate = true)
+    val _id: Int=0,
 )

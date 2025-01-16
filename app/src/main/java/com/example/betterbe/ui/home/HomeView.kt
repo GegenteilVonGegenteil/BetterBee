@@ -1,5 +1,6 @@
 package com.example.betterbe.ui.home
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -54,11 +55,12 @@ fun HomeView(
         )
         LazyColumn {
             itemsIndexed(habitsWithStatus) { index, (habit, completionStatus) ->
+                Log.e("habits", habit.toString())
                 HabitListItem(
                     habit,
                     completionStatus,
                     modifier,
-                    onCardClick = {onHabitClick(habit.id)},
+                    onCardClick = {onHabitClick(habit._id)},
                     onCheckClick = {homeViewModel.changeCompletionStatus(it)}
                 )
             }
