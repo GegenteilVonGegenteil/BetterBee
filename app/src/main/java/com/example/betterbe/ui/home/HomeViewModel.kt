@@ -24,7 +24,7 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
             repository.getAllHabits().collect { habits ->
                 val habitsWithStatus = habits.map { habit ->
                     habit to repository.getLastCompletionStatus(habit._id)
-                }
+                }.sortedByDescending { it.second?.completed == false }
                 _habitsWithCompletionStatus.value = habitsWithStatus
             }
         }

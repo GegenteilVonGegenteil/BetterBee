@@ -3,6 +3,7 @@ package com.example.betterbe.ui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
@@ -22,7 +23,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
-import com.example.betterbe.data.Habit
 import com.example.betterbe.data.db.CompletionStatusEntity
 import com.example.betterbe.data.db.HabitEntity
 
@@ -77,6 +77,7 @@ fun HabitListItem(
                 onClick = { onCheckClick(habit) }
             ) {
                 Icon(
+                    modifier = Modifier.size(32.dp),
                     imageVector = if (completionStatus?.completed == true) Icons.Default.CheckBoxOutlineBlank else Icons.Outlined.CheckBox,
                     contentDescription = "CheckBox",
                     tint = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
