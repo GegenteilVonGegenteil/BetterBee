@@ -1,15 +1,12 @@
 package com.example.betterbe.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DeleteForever
-import androidx.compose.material.icons.outlined.CheckBox
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -59,17 +56,17 @@ fun ManageListItem(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .width(345.dp)
-                .height(80.dp)
                 .padding(start = 16.dp, top = 22.dp, end = 16.dp, bottom = 22.dp)
 
         ) {
             Text(
-                text = "Drink Water",
+                text = habit.name,
                 style = TextStyle(
                     fontSize = 25.sp,
                     fontWeight = FontWeight(400),
                     color = habitColor
-                )
+                ),
+                modifier = Modifier.weight(3f)
             )
             Row {
                 IconButton(
@@ -103,5 +100,5 @@ fun ManageListItem(
 @Preview
 @Composable
 fun ItemPreview(){
-    ManageListItem(Modifier, Habit(0, " and other stuff that needs to be here", "blue")){}
+    ManageListItem(Modifier, Habit(0, "and other stuff that needs to be here", "blue")){}
 }

@@ -2,13 +2,10 @@ package com.example.betterbe.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckBox
 import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.CheckBox
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -27,7 +24,6 @@ import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
 import com.example.betterbe.data.Habit
 import com.example.betterbe.data.db.CompletionStatusEntity
-import com.example.betterbe.data.db.HabitEntity
 
 @Composable
 fun HabitListItem(
@@ -62,7 +58,6 @@ fun HabitListItem(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .width(345.dp)
-                .height(80.dp)
                 .padding(start = 16.dp, top = 22.dp, end = 16.dp, bottom = 22.dp)
 
         ) {
@@ -70,11 +65,11 @@ fun HabitListItem(
                 text = "Drink Water",
                 style = TextStyle(
                     fontSize = 25.sp,
-                    //fontFamily = FontFamily(Font(R.font.jost)),
                     fontWeight = FontWeight(400),
                     color = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950),
                     textDecoration = if (completionStatus?.completed == true) TextDecoration.LineThrough else TextDecoration.None
-                    )
+                    ),
+                modifier = Modifier.weight(3f)
             )
             IconButton(
                 modifier = Modifier.padding(2.dp),
