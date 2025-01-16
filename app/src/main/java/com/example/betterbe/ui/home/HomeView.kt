@@ -9,13 +9,13 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
@@ -29,9 +29,10 @@ fun HomeView(
     onHabitClick: (Int) -> Unit
 ) {
 
-    val habitsWithStatus by homeViewModel.habitsWithCompletionStatus.observeAsState(emptyList())
+    val habitsWithStatus by homeViewModel.habitsWithCompletionStatus.collectAsStateWithLifecycle()
     val completedCount = homeViewModel.getCompletedHabitsCount(habitsWithStatus)
     val totalCount = habitsWithStatus.size
+
 
     Column(modifier = Modifier.fillMaxSize()){
 
