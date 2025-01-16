@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.betterbe.HabitApplication
 import com.example.betterbe.ui.home.HomeViewModel
+import com.example.betterbe.ui.manage.ManageViewModel
 
 object AppViewModelProvider {
 
@@ -14,6 +15,13 @@ object AppViewModelProvider {
         initializer {
             val habitApplication = this[APPLICATION_KEY] as HabitApplication
             HomeViewModel(
+                habitApplication.habitRepository
+            )
+        }
+
+        initializer {
+            val habitApplication = this[APPLICATION_KEY] as HabitApplication
+            ManageViewModel(
                 habitApplication.habitRepository
             )
         }
