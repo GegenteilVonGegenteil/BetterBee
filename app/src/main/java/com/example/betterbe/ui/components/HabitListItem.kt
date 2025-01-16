@@ -6,7 +6,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckBox
+import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.outlined.CheckBox
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -35,12 +38,12 @@ fun HabitListItem(
     onCheckClick: (Habit) -> Unit
 ) {
     val habitColor = when (habit.color) {
-        "red_light" -> colorResource(R.color.red_light)
-        "orange_light" -> colorResource(R.color.orange_light)
-        "yellow_light" -> colorResource(R.color.orange_light)
-        "green_light" -> colorResource(R.color.green_light)
-        "blue_light" -> colorResource(R.color.blue_light)
-        "violet_light" -> colorResource(R.color.violet_light)
+        "red" -> colorResource(R.color.red_light)
+        "orange" -> colorResource(R.color.orange_light)
+        "yellow" -> colorResource(R.color.orange_light)
+        "green" -> colorResource(R.color.green_light)
+        "blue" -> colorResource(R.color.blue_light)
+        "violet" -> colorResource(R.color.violet_light)
         else -> {
             colorResource(R.color.yellow_light)
         }
@@ -78,7 +81,7 @@ fun HabitListItem(
                 onClick = { onCheckClick(habit) }
             ) {
                 Icon(
-                    imageVector =  Icons.Default.CheckCircle,
+                    imageVector = if (completionStatus?.completed == true) Icons.Default.CheckBoxOutlineBlank else Icons.Outlined.CheckBox,
                     contentDescription = "CheckBox",
                     tint = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
                 )
