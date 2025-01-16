@@ -34,7 +34,7 @@ class HabitRepository(
         return Habit(
             habitEntity._id, habitEntity.name, habitEntity.color
         )
-    }**/
+    } username test **/
 
     suspend fun insertCompletionStatus(completionStatus: CompletionStatus) {
         completionStatusDao.addCompletionStatus(CompletionStatusEntity(0, completionStatus.habitId, LocalDate.now(), false))
