@@ -22,14 +22,17 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
+import com.example.betterbe.data.Habit
 import com.example.betterbe.data.db.CompletionStatusEntity
 import com.example.betterbe.data.db.HabitEntity
 
 @Composable
 fun HabitListItem(
-    habit: HabitEntity,
+    habit: Habit,
     completionStatus: CompletionStatusEntity?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCardClick: () -> Unit,
+    onCheckClick: (Habit) -> Unit
 ) {
     val habitColor = when (habit.color) {
         "red_light" -> colorResource(R.color.red_light)
@@ -44,6 +47,7 @@ fun HabitListItem(
     }
 
     Card(
+        onClick = {onCardClick()},
         colors = CardDefaults.cardColors(
             containerColor = if(completionStatus?.completed == true) colorResource(R.color.bronco_900) else habitColor
         ),
@@ -71,7 +75,7 @@ fun HabitListItem(
             )
             IconButton(
                 modifier = Modifier.padding(2.dp),
-                onClick = {  }
+                onClick = { onCheckClick(habit) }
             ) {
                 Icon(
                     imageVector =  Icons.Default.CheckCircle,

@@ -24,7 +24,8 @@ import com.example.betterbe.ui.components.HabitListItem
 @Composable
 fun HomeView(
     modifier: Modifier,
-    homeViewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    homeViewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    onHabitClick: (Int) -> Unit
 ) {
 
     val habitsWithStatus by homeViewModel.habitsWithCompletionStatus.observeAsState(emptyList())
@@ -55,7 +56,13 @@ fun HomeView(
         )
         LazyColumn {
             itemsIndexed(habitsWithStatus) { index, (habit, completionStatus) ->
-                HabitListItem(habit, completionStatus, modifier)
+                HabitListItem(
+                    habit,
+                    completionStatus,
+                    modifier,
+                    onCardClick = {onHabitClick(habit.id)},
+                    onCheckClick = {homeViewModel.changeCompletionStatus(it)}
+                )
             }
         }
     }

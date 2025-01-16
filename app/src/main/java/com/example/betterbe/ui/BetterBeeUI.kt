@@ -39,7 +39,9 @@ fun HabitApp(
         ) {
             composable(Routes.Home.route) {
                 Column(Modifier.padding(innerPadding)) {
-                    HomeView(Modifier.padding(innerPadding))
+                    HomeView(Modifier){ habitId ->
+                        navController.navigate("detail/$habitId")
+                    }
                 }
             }
             composable(Routes.Manager.route) {
