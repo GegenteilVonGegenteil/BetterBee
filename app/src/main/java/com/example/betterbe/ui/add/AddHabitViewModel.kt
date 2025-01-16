@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
 import com.example.betterbe.data.HabitRepository
+import com.example.betterbe.data.db.CompletionStatusEntity
 import com.example.betterbe.data.db.HabitEntity
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -34,7 +35,7 @@ class AddHabitViewModel(
         viewModelScope.launch {
 
             val newHabit = repository.addHabit(HabitEntity(name, "red"))
-            repository.insertCompletionStatus(CompletionStatus(0, newHabit.toInt(), LocalDate.now(), false))
+            repository.insertCompletionStatus(CompletionStatusEntity(0, newHabit.toInt(), LocalDate.now(), false))
         }
 
         onHabitAdded()

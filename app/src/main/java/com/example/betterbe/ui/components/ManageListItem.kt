@@ -21,16 +21,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.data.Habit
+import com.example.betterbe.data.db.HabitEntity
 
 @Composable
 fun ManageListItem(
     modifier: Modifier,
-    habit: Habit,
+    habit: HabitEntity,
     onEditClick: () -> Unit,
-    onDeleteClick: (Habit) -> Unit
+    onDeleteClick: (HabitEntity) -> Unit
 ) {
     val habitColor = when (habit.color) {
         "red" -> colorResource(R.color.red_light)

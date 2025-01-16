@@ -16,28 +16,25 @@ class HabitRepository(
         return habitDao.addHabit(habit)
     }
 
-    suspend fun updateHabit(habit: Habit) {
-        //habitDao.update(HabitEntity(habit.id, habit.name, habit.color))
+    suspend fun updateHabit(habit: HabitEntity) {
+        habitDao.update(habit)
     }
 
-    suspend fun deleteHabit(habit: Habit) {
-        //habitDao.delete(HabitEntity(habit.id, habit.name, habit.color))
-        completionStatusDao.deleteCompletionStatusesForHabit(habit.id)
+    suspend fun deleteHabit(habit: HabitEntity) {
+        completionStatusDao.deleteCompletionStatusesForHabit(habit._id)
+        habitDao.delete(habit)
     }
 
     fun getAllHabits(): Flow<List<HabitEntity>> {
         return habitDao.getAllHabits()
     }
 
-    /**fun getHabitById(habitId: Int): Habit {
-        val habitEntity = habitDao.getHabitById(habitId)
-        return Habit(
-            habitEntity._id, habitEntity.name, habitEntity.color
-        )
-    } username test **/
+    fun getHabitById(habitId: Int): HabitEntity {
+        return habitDao.getHabitById(habitId)
+    }
 
-    suspend fun insertCompletionStatus(completionStatus: CompletionStatus) {
-        completionStatusDao.addCompletionStatus(CompletionStatusEntity(0, completionStatus.habitId, LocalDate.now(), false))
+    suspend fun insertCompletionStatus(completionStatus: CompletionStatusEntity) {
+        completionStatusDao.addCompletionStatus(completionStatus)
     }
 
     suspend fun changeCheckedStatus(habitId: Int) {
