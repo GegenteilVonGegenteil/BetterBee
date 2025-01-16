@@ -20,7 +20,7 @@ enum class Routes(val route: String) {
     Home("home"),
     Manager("manager"),
     Add("add"),
-    Edit("edit"),
+    Edit("edit/{habitId}"),
     Detail("detail/{habitId}")
 }
 
@@ -47,8 +47,10 @@ fun HabitApp(
             }
             composable(Routes.Manager.route) {
                 Column(Modifier.padding(innerPadding)) {
-                    ManageView(Modifier) { habitId ->
-                        navController.navigate("detail/$habitId")
+                    ManageView(
+                        Modifier
+                    ) { habitId ->
+                        navController.navigate("edit/$habitId")
                     }
                 }
             }
@@ -57,7 +59,8 @@ fun HabitApp(
 
                 }
             }
-            composable(Routes.Edit.route) {
+            composable(route = Routes.Detail.route,
+                arguments = listOf(navArgument("habitId") { type = NavType.IntType })) {
                 Column(Modifier.padding(innerPadding)) {
 
                 }

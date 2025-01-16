@@ -24,7 +24,7 @@ import com.example.betterbe.ui.components.ManageListItem
 fun ManageView(
     modifier: Modifier,
     manageViewModel: ManageViewModel = viewModel(factory = AppViewModelProvider.Factory),
-    onHabitClick: (Int) -> Unit
+    onEditClick: (Int) -> Unit
 ) {
 
     val habits by manageViewModel.habits.collectAsStateWithLifecycle()
@@ -52,7 +52,12 @@ fun ManageView(
         )
         LazyColumn {
             itemsIndexed(habits) { index, habit ->
-                ManageListItem(modifier, habit , onCardClick = {onHabitClick(habit.id)})
+                ManageListItem(
+                    modifier,
+                    habit,
+                    onEditClick = { onEditClick(habit.id) },
+                    onDeleteClick = { habit -> manageViewModel.deleteHabitItem(habit) }
+                )
             }
         }
     }

@@ -19,9 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.data.Habit
 
@@ -29,7 +29,8 @@ import com.example.betterbe.data.Habit
 fun ManageListItem(
     modifier: Modifier,
     habit: Habit,
-    onCardClick: () -> Unit
+    onEditClick: () -> Unit,
+    onDeleteClick: (Habit) -> Unit
 ) {
     val habitColor = when (habit.color) {
         "red" -> colorResource(R.color.red_light)
@@ -44,7 +45,6 @@ fun ManageListItem(
     }
 
     Card(
-        onClick = {onCardClick()},
         colors = CardDefaults.cardColors(
             containerColor = colorResource(R.color.bronco_900)
         ),
@@ -71,22 +71,22 @@ fun ManageListItem(
             Row {
                 IconButton(
                     modifier = Modifier.padding(2.dp),
-                    onClick = { }
+                    onClick = {onEditClick()}
                 ) {
                     Icon(
                         imageVector =Icons.Outlined.Edit,
-                        contentDescription = "CheckBox",
+                        contentDescription = "Edit Habit",
                         tint = habitColor,
                         modifier = Modifier.size(32.dp)
                     )
                 }
                 IconButton(
                     modifier = Modifier.padding(2.dp),
-                    onClick = { }
+                    onClick = { onDeleteClick(habit)}
                 ) {
                     Icon(
                         imageVector =Icons.Filled.DeleteForever,
-                        contentDescription = "CheckBox",
+                        contentDescription = "Delete Habit",
                         tint = habitColor,
                         modifier = Modifier.size(32.dp)
                     )
@@ -95,10 +95,4 @@ fun ManageListItem(
 
         }
     }
-}
-
-@Preview
-@Composable
-fun ItemPreview(){
-    ManageListItem(Modifier, Habit(0, "and other stuff that needs to be here", "blue")){}
 }
