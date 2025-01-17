@@ -78,7 +78,7 @@ fun HabitListItem(
             ) {
                 Icon(
                     modifier = Modifier.size(32.dp),
-                    imageVector = if (completionStatus?.completed == true) Icons.Default.CheckBoxOutlineBlank else Icons.Outlined.CheckBox,
+                    imageVector = if (completionStatus?.completed == false) Icons.Default.CheckBoxOutlineBlank else Icons.Outlined.CheckBox,
                     contentDescription = "CheckBox",
                     tint = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
                 )

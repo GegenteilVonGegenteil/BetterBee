@@ -46,7 +46,7 @@ fun HomeView(
             modifier = Modifier.padding(start = 20.dp, top = 30.dp, bottom = 5.dp)
         )
         Text(
-            "($completedCount/$totalCount habits)",
+            "($completedCount/$totalCount habits done)",
             style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight(400),
