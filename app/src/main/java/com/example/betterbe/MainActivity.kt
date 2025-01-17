@@ -14,10 +14,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.betterbe.ui.HabitApp
 import com.example.betterbe.ui.theme.BetterBeTheme
 import com.example.betterbe.ui.theme.BetterBeeTheme
+import com.example.betterbe.workManager.scheduleDailyCompletionStatusWorker
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        scheduleDailyCompletionStatusWorker(this)
         enableEdgeToEdge()
         setContent {
             BetterBeeTheme {
