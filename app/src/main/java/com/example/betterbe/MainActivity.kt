@@ -19,7 +19,6 @@ import com.example.betterbe.workManager.scheduleDailyCompletionStatusWorker
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        scheduleDailyCompletionStatusWorker(this)
         enableEdgeToEdge()
         setContent {
             BetterBeeTheme {

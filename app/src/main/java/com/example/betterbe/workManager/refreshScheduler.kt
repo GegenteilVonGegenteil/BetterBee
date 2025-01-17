@@ -12,6 +12,7 @@ fun scheduleDailyCompletionStatusWorker(context: Context) {
         .setInitialDelay(calculateInitialDelay(), TimeUnit.MILLISECONDS)
         .build()
 
+
     WorkManager.getInstance(context).enqueueUniquePeriodicWork(
         "CreateCompletionStatusWorker",
         ExistingPeriodicWorkPolicy.REPLACE,
