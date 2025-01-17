@@ -23,16 +23,17 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
-import com.example.betterbe.data.db.CompletionStatusEntity
+import com.example.betterbe.data.CompletionStatus
+import com.example.betterbe.data.Habit
 import com.example.betterbe.data.db.HabitEntity
 
 @Composable
 fun HabitListItem(
-    habit: HabitEntity,
-    completionStatus: CompletionStatusEntity?,
+    habit: Habit,
+    completionStatus: CompletionStatus?,
     modifier: Modifier = Modifier,
     onCardClick: () -> Unit,
-    onCheckClick: (HabitEntity) -> Unit
+    onCheckClick: (Habit) -> Unit
 ) {
     val habitColor = when (habit.color) {
         "red" -> colorResource(R.color.red_light)

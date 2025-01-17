@@ -55,7 +55,7 @@ fun ManageView(
                 ManageListItem(
                     modifier,
                     habit,
-                    onEditClick = { onEditClick(habit._id) },
+                    onEditClick = { onEditClick(habit.id) },
                     onDeleteClick = { habit -> manageViewModel.deleteHabitItem(habit) }
                 )
             }

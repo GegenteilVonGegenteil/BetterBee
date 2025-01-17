@@ -61,7 +61,7 @@ fun HomeView(
                     habit,
                     completionStatus,
                     modifier,
-                    onCardClick = {onHabitClick(habit._id)},
+                    onCardClick = {onHabitClick(habit.id)},
                     onCheckClick = {homeViewModel.changeCompletionStatus(it)}
                 )
             }

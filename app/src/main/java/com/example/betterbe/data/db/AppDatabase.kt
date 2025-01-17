@@ -8,7 +8,7 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import java.time.LocalDate
 
-@Database(entities = [HabitEntity::class, CompletionStatusEntity::class], version = 2)
+@Database(entities = [HabitEntity::class, CompletionStatusEntity::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun habitDao() : HabitDao

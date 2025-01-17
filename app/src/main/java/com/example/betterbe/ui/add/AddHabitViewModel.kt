@@ -1,6 +1,5 @@
 package com.example.betterbe.ui.add
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,8 +33,15 @@ class AddHabitViewModel(
     fun addHabit(name: String, onHabitAdded: () -> Unit) {
         viewModelScope.launch {
 
-            val newHabit = repository.addHabit(HabitEntity(name, "red"))
-            repository.insertCompletionStatus(CompletionStatusEntity(0, newHabit.toInt(), LocalDate.now(), false))
+            val newHabit = repository.addHabit(Habit(name, "red"))
+            repository.insertCompletionStatus(
+                CompletionStatus(
+                newHabit.toInt(),
+                LocalDate.now(),
+                false,
+                0
+                )
+            )
         }
 
         onHabitAdded()

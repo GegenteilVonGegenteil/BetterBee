@@ -28,9 +28,9 @@ import com.example.betterbe.data.db.HabitEntity
 @Composable
 fun ManageListItem(
     modifier: Modifier,
-    habit: HabitEntity,
+    habit: Habit,
     onEditClick: () -> Unit,
-    onDeleteClick: (HabitEntity) -> Unit
+    onDeleteClick: (Habit) -> Unit
 ) {
     val habitColor = when (habit.color) {
         "red" -> colorResource(R.color.red_light)

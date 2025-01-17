@@ -12,29 +12,36 @@ class HabitRepository(
     private val habitDao: HabitDao,
     private val completionStatusDao: CompletionStatusDao
 ) {
-    suspend fun addHabit(habit: HabitEntity) : Long{
-        return habitDao.addHabit(habit)
+    suspend fun addHabit(habit: Habit) : Long{
+        return habitDao.addHabit(HabitEntity(habit.name, habit.color))
     }
 
-    suspend fun updateHabit(habit: HabitEntity) {
-        habitDao.update(habit)
+    suspend fun updateHabit(habit: Habit) {
+        habitDao.update(HabitEntity(habit.name, habit.color, habit.id))
     }
 
-    suspend fun deleteHabit(habit: HabitEntity) {
-        completionStatusDao.deleteCompletionStatusesForHabit(habit._id)
-        habitDao.delete(habit)
+    suspend fun deleteHabit(habit: Habit) {
+        completionStatusDao.deleteCompletionStatusesForHabit(habit.id)
+        habitDao.delete(HabitEntity(habit.name, habit.color, habit.id))
     }
 
-    fun getAllHabits(): Flow<List<HabitEntity>> {
-        return habitDao.getAllHabits()
+    val habits = habitDao.getAllHabits().map { habitList ->
+        habitList.map { habit ->
+            Habit(habit.name, habit.color, habit._id)
+        }
     }
 
-    fun getHabitById(habitId: Int): HabitEntity {
-        return habitDao.getHabitById(habitId)
+    fun getHabitById(habitId: Int): Habit {
+        val habitEntity = habitDao.getHabitById(habitId)
+        return Habit(
+            habitEntity.name, habitEntity.color, habitEntity._id
+        )
     }
 
-    suspend fun insertCompletionStatus(completionStatus: CompletionStatusEntity) {
-        completionStatusDao.addCompletionStatus(completionStatus)
+    suspend fun insertCompletionStatus(completionStatus: CompletionStatus) {
+        completionStatusDao.addCompletionStatus(CompletionStatusEntity(
+            completionStatus.habitId, completionStatus.date, completionStatus.completed, completionStatus.id
+            ))
     }
 
     suspend fun changeCheckedStatus(habitId: Int) {
@@ -44,15 +51,28 @@ class HabitRepository(
         }
     }
 
-    suspend fun getCompletionStatusForDate(habitId: Int, date: LocalDate): CompletionStatusEntity? {
-        return completionStatusDao.getCompletionStatusForDate(habitId, date)
+    suspend fun getCompletionStatusForDate(habitId: Int, date: LocalDate): CompletionStatus? {
+        val completionStatusEntity = completionStatusDao.getCompletionStatusForDate(habitId, date)
+
+        return completionStatusEntity?.let {
+            CompletionStatus(it.habitId, it.date, it.completed, it._id)
+        }
     }
 
-    fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatusEntity>> {
-        return completionStatusDao.getCompletionStatusForHabit(habitId)
+
+    fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatus>> {
+        val completionStates = completionStatusDao.getCompletionStatusForHabit(habitId)
+        return completionStates.map(){ completionStatesList ->
+            completionStatesList.map { completionState ->
+                CompletionStatus(completionState.habitId, completionState.date, completionState.completed, completionState._id)
+            }
+        }
     }
 
-    suspend fun getLastCompletionStatus(habitId: Int): CompletionStatusEntity? {
-        return completionStatusDao.getCurrentCompletionStatus(habitId)
+    suspend fun getLastCompletionStatus(habitId: Int): CompletionStatus? {
+        val completionState = completionStatusDao.getCurrentCompletionStatus(habitId)
+        return completionState?.let {
+            CompletionStatus(it.habitId, it.date, it.completed, it._id)
+        }
     }
 }

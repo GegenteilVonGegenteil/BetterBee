@@ -6,9 +6,10 @@ import java.time.LocalDate
 
 @Entity(tableName = "completion_status")
 data class CompletionStatusEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
     val habitId: Int,
     val date: LocalDate = LocalDate.now(),
-    val completed: Boolean = false
+    val completed: Boolean = false,
+
+    @PrimaryKey(autoGenerate = true)
+    val _id: Int = 0,
 )
