@@ -7,6 +7,8 @@ import androidx.work.WorkManager
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
+
+
 fun scheduleDailyCompletionStatusWorker(context: Context) {
     val workRequest = PeriodicWorkRequestBuilder<CreateCompletionStatusWorker>(1, TimeUnit.DAYS)
         .setInitialDelay(calculateInitialDelay(), TimeUnit.MILLISECONDS)
