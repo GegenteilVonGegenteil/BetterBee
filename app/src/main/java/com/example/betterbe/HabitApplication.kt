@@ -8,15 +8,14 @@ import com.example.betterbe.data.HabitRepository
 import com.example.betterbe.data.db.AppDatabase
 import com.example.betterbe.workManager.CreateCompletionStatusWorker
 import com.example.betterbe.workManager.scheduleDailyCompletionStatusWorker
+import com.example.betterbe.workManager.scheduleTestCompletionStatusWorker
 
 class HabitApplication : Application() {
     lateinit var repository: HabitRepository
     override fun onCreate() {
         super.onCreate()
-        Log.d("MyApp", "Application started")
         repository = habitRepository
         scheduleDailyCompletionStatusWorker(this)
-        Log.d("MyApp", "Worker Started")
     }
     val habitRepository by lazy {
         HabitRepository(AppDatabase.getDatabase(this).habitDao(), AppDatabase.getDatabase(this).completionStatusDao())

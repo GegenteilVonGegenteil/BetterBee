@@ -56,7 +56,6 @@ fun HomeView(
         )
         LazyColumn {
             itemsIndexed(habitsWithStatus) { index, (habit, completionStatus) ->
-                Log.e("habits", habit.toString())
                 HabitListItem(
                     habit,
                     completionStatus,

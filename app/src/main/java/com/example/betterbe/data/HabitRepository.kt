@@ -47,7 +47,7 @@ class HabitRepository(
     suspend fun changeCheckedStatus(habitId: Int) {
         val completionStatus = getLastCompletionStatus(habitId)
         if (completionStatus != null) {
-            completionStatusDao.updateCompletionStatus(habitId, !completionStatus.completed)
+            completionStatusDao.updateCompletionStatus(completionStatus.id, !completionStatus.completed)
         }
     }
 

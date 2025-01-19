@@ -12,8 +12,8 @@ interface CompletionStatusDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addCompletionStatus(completionStatus: CompletionStatusEntity)
 
-    @Query("UPDATE completion_status SET completed  = :completed WHERE habitId = :habitId")
-    suspend fun updateCompletionStatus(habitId: Int, completed: Boolean)
+    @Query("UPDATE completion_status SET completed  = :completed WHERE _id = :id")
+    suspend fun updateCompletionStatus(id: Int, completed: Boolean)
 
     @Query("SELECT * FROM completion_status WHERE habitId = :habitId AND date = :date")
     suspend fun getCompletionStatusForDate(habitId: Int, date: LocalDate): CompletionStatusEntity?
@@ -21,7 +21,7 @@ interface CompletionStatusDao {
     @Query("SELECT * FROM completion_status WHERE habitId = :habitId")
     fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatusEntity>>
 
-    @Query("SELECT * FROM completion_status WHERE habitId = :habitId ORDER BY date DESC LIMIT 1")
+    @Query("SELECT * FROM completion_status WHERE habitId = :habitId ORDER BY _id DESC LIMIT 1")
     suspend fun getCurrentCompletionStatus(habitId: Int): CompletionStatusEntity?
 
     @Query("DELETE FROM completion_status WHERE habitId = :habitId")
