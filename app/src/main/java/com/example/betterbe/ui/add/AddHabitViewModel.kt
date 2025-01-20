@@ -1,5 +1,6 @@
 package com.example.betterbe.ui.add
 
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,20 +21,21 @@ class AddHabitViewModel(
     private val _name = MutableLiveData("")
     val name: LiveData<String> = _name
 
-    //color
-    // private val _description = MutableLiveData("")
-    // val description: LiveData<String> = _description
+    private val _color = MutableLiveData("yellow")
+    val color: LiveData<String> = _color
 
-    fun onTitleChange(newTitle: String) {
-        _name.value = newTitle
+    fun onNameChange(newName: String) {
+        _name.value = newName
     }
 
-    // fun color change
+    fun onColorChange(newColor: String) {
+        _color.value = newColor
+    }
 
-    fun addHabit(name: String, onHabitAdded: () -> Unit) {
+    fun addHabit(name: String, color:String, onHabitAdded: () -> Unit) {
         viewModelScope.launch {
 
-            val newHabit = repository.addHabit(Habit(name, "red"))
+            val newHabit = repository.addHabit(Habit(name, color))
             repository.insertCompletionStatus(
                 CompletionStatus(
                 newHabit.toInt(),
