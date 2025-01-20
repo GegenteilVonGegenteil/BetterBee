@@ -8,7 +8,6 @@ import com.example.betterbe.data.HabitRepository
 import com.example.betterbe.data.db.AppDatabase
 import com.example.betterbe.workManager.CreateCompletionStatusWorker
 import com.example.betterbe.workManager.scheduleDailyCompletionStatusWorker
-import com.example.betterbe.workManager.scheduleTestCompletionStatusWorker
 
 class HabitApplication : Application() {
     lateinit var repository: HabitRepository

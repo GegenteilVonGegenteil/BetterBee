@@ -25,7 +25,7 @@ fun scheduleDailyCompletionStatusWorker(context: Context) {
 fun calculateInitialDelay(): Long {
     val currentTime = Calendar.getInstance()
     val midnightTime = Calendar.getInstance().apply {
-        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.HOUR_OF_DAY, 12)
         set(Calendar.MINUTE, 0)
         set(Calendar.SECOND, 0)
         set(Calendar.MILLISECOND, 0)
