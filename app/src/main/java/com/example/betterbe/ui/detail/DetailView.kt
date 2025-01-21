@@ -5,11 +5,18 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,7 +57,21 @@ fun DetailView(
     val completionStatuses by detailViewModel.getCompletionStatusesForHabit(state.habit.id).collectAsStateWithLifecycle(emptyList())
     val markedDates = completionStatuses.filter { it.completed }.map { it.date }
 
-    Column (Modifier.padding(24.dp)) {
+    FloatingActionButton(
+        onClick = {  navController.popBackStack() },
+        modifier = Modifier
+            .padding(20.dp)
+            .size(40.dp),
+        containerColor = colorResource(R.color.bronco_50),
+        contentColor = colorResource(R.color.bronco_950)
+    ) {
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+            contentDescription = "Back"
+        )
+    }
+
+    Column (Modifier.padding(vertical = 160.dp, horizontal = 24.dp)) {
         Text(state.habit.name,
             style = androidx.compose.ui.text.TextStyle(
                 fontSize = 31.sp,
@@ -63,11 +84,12 @@ fun DetailView(
             modifier = Modifier.padding(top = 8.dp)
         )
         Box(
+
             modifier = Modifier
-                .fillMaxSize()
-                .padding(24.dp),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ){
+
             CalendarView(
                 markedDates = markedDates
             )
@@ -108,6 +130,9 @@ fun CalendarView(markedDates: List<LocalDate>) {
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center,
                     text = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault()),
+                    style = androidx.compose.ui.text.TextStyle(
+                        color = colorResource(R.color.mustard_400)
+                    )
                 )
             }
         }
