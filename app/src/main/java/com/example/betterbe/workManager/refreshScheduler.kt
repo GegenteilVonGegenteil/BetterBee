@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit
 
 
 fun scheduleDailyCompletionStatusWorker(context: Context) {
-    val workRequest = PeriodicWorkRequestBuilder<CreateCompletionStatusWorker>(1, TimeUnit.DAYS)
-        .setInitialDelay(calculateInitialDelay(), TimeUnit.MILLISECONDS)
+    val workRequest = PeriodicWorkRequestBuilder<CreateCompletionStatusWorker>(15, TimeUnit.MINUTES)
+        .setInitialDelay(calculateInitialDelay(), TimeUnit.MINUTES)
         .build()
 
 
@@ -25,8 +25,8 @@ fun scheduleDailyCompletionStatusWorker(context: Context) {
 fun calculateInitialDelay(): Long {
     val currentTime = Calendar.getInstance()
     val midnightTime = Calendar.getInstance().apply {
-        set(Calendar.HOUR_OF_DAY, 12)
-        set(Calendar.MINUTE, 0)
+        set(Calendar.HOUR_OF_DAY, 11)
+        set(Calendar.MINUTE, 5)
         set(Calendar.SECOND, 0)
         set(Calendar.MILLISECOND, 0)
         if (before(currentTime)) {

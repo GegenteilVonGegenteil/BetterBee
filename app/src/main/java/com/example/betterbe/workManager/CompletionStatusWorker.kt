@@ -15,6 +15,7 @@ class CreateCompletionStatusWorker(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
+        Log.e("Worker", "Worker Started aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         return try {
             val repository = (applicationContext as HabitApplication).repository
             val habits = repository.habits.first()
@@ -27,8 +28,10 @@ class CreateCompletionStatusWorker(
                 )
                 repository.insertCompletionStatus(completionStatus)
             }
+            Log.e("Worker", "Worker Finished aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             Result.success()
         } catch (e: Exception) {
+            Log.e("Worker", "Worker Failed aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", e)
             Result.failure()
         }
     }
