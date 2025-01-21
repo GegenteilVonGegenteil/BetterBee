@@ -31,7 +31,7 @@ class HabitRepository(
         }
     }
 
-    fun getHabitById(habitId: Int): Habit {
+    suspend fun getHabitById(habitId: Int): Habit {
         val habitEntity = habitDao.getHabitById(habitId)
         return Habit(
             habitEntity.name, habitEntity.color, habitEntity._id
@@ -60,7 +60,7 @@ class HabitRepository(
     }
 
 
-    fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatus>> {
+    fun getCompletionStatusesForHabit(habitId: Int): Flow<List<CompletionStatus>> {
         val completionStates = completionStatusDao.getCompletionStatusForHabit(habitId)
         return completionStates.map(){ completionStatesList ->
             completionStatesList.map { completionState ->
