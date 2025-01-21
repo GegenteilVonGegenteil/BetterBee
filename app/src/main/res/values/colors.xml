@@ -28,4 +28,7 @@
     <color name="green_light">#BAFFAA</color>
     <color name="blue_light">#A9D3FA</color>
     <color name="violet_light">#BDB2FF</color>
+    <color name="red_melon">#F3A5A4</color>
+    <color name="green_tea">#C5EEBC</color>
+
 </resources>
