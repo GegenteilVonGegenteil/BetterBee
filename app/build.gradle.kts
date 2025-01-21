@@ -42,6 +42,10 @@ android {
 }
 
 dependencies {
+    implementation("com.kizitonwose.calendar:view:2.6.1")
+
+    implementation("com.kizitonwose.calendar:compose:2.6.1")
+
     implementation("androidx.core:core-splashscreen:1.2.0-alpha02")
 
     implementation ("androidx.work:work-runtime-ktx:2.7.1")

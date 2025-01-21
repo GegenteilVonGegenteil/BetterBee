@@ -1,6 +1,6 @@
 package com.example.betterbe.workManager
 
-import android.content.Context
+/*import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -17,7 +17,7 @@ class CreateCompletionStatusWorker(
     override suspend fun doWork(): Result {
         Log.e("Worker", "Worker Started aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         return try {
-            val repository = (applicationContext as HabitApplication).repository
+            val repository = (applicationContext as HabitApplication).habitRepository
             val habits = repository.habits.first()
             habits.forEach { habit ->
                 val completionStatus = CompletionStatus(
@@ -35,4 +35,4 @@ class CreateCompletionStatusWorker(
             Result.failure()
         }
     }
-}
+}*/

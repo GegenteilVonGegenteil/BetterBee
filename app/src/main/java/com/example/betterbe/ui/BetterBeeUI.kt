@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.betterbe.ui.add.AddHabitView
 import com.example.betterbe.ui.components.BottomNavBar
+import com.example.betterbe.ui.detail.DetailView
 import com.example.betterbe.ui.home.HomeView
 import com.example.betterbe.ui.manage.ManageView
 
@@ -72,18 +73,12 @@ fun HabitApp(
                     }
                 }
 
-            composable(route = Routes.Detail.route,
-                arguments = listOf(navArgument("habitId") { type = NavType.IntType })) {
-                Column(Modifier.padding(innerPadding)) {
-
-                }
-            }
             composable(
                 route = Routes.Detail.route,
                 arguments = listOf(navArgument("habitId") { type = NavType.IntType })
             ) {
                 Column(Modifier.padding(innerPadding)) {
-
+                    DetailView(navController)
                 }
             }
         }

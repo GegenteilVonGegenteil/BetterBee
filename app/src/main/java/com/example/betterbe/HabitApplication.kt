@@ -1,12 +1,9 @@
 package com.example.betterbe
 
 import android.app.Application
-import android.util.Log
-import androidx.work.Configuration
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.HabitRepository
 import com.example.betterbe.data.db.AppDatabase
-import com.example.betterbe.workManager.scheduleDailyCompletionStatusWorker
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
