@@ -21,7 +21,7 @@ interface CompletionStatusDao {
     @Query("SELECT * FROM completion_status WHERE habitId = :habitId")
     fun getCompletionStatusForHabit(habitId: Int): Flow<List<CompletionStatusEntity>>
 
-    @Query("SELECT * FROM completion_status WHERE habitId = :habitId ORDER BY _id DESC LIMIT 1")
+    @Query("SELECT * FROM completion_status WHERE habitId = :habitId ORDER BY date DESC LIMIT 1")
     suspend fun getCurrentCompletionStatus(habitId: Int): CompletionStatusEntity?
 
     @Query("DELETE FROM completion_status WHERE habitId = :habitId")

@@ -58,6 +58,10 @@ fun DetailView(
                 color = colorResource(R.color.bronco_50)
             )
         )
+        Text(
+            "completed ${markedDates.size} of ${completionStatuses.size} days",
+            modifier = Modifier.padding(top = 8.dp)
+        )
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -71,8 +75,6 @@ fun DetailView(
 
     }
 }
-
-
 
 @Composable
 fun CalendarView(markedDates: List<LocalDate>) {
