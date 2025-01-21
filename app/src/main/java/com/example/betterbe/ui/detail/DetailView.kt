@@ -71,7 +71,7 @@ fun DetailView(
         )
     }
 
-    Column (Modifier.padding(vertical = 160.dp, horizontal = 24.dp)) {
+    Column (Modifier.padding( 24.dp)) {
         Text(state.habit.name,
             style = androidx.compose.ui.text.TextStyle(
                 fontSize = 31.sp,
