@@ -63,7 +63,6 @@ fun EditHabitView(
     val color by editHabitViewModel.color.collectAsStateWithLifecycle("")
     val isValid by editHabitViewModel.isValid
     var showDialog by remember { mutableStateOf(false) }
-    val context = LocalContext.current
 
     FloatingActionButton(
         onClick = {  showDialog = true },
