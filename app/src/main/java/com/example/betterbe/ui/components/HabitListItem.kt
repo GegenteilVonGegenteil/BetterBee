@@ -53,14 +53,14 @@ fun HabitListItem(
             containerColor = if(completionStatus?.completed == true) colorResource(R.color.bronco_900) else habitColor
         ),
         modifier = modifier
-            .padding(20.dp)
+            .padding(10.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .width(345.dp)
-                .padding(start = 16.dp, top = 22.dp, end = 16.dp, bottom = 22.dp)
+                .padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 12.dp)
 
         ) {
             Text(
