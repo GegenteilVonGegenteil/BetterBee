@@ -26,11 +26,12 @@ class HabitApplication : Application() {
             val habits = habitRepository.habits.first()
             val currentDate = LocalDate.now()
             habits.forEach { habit ->
-                var date = currentDate
-                var completionStatus: CompletionStatus? = null
-                while (completionStatus == null) {
-                    completionStatus = habitRepository.getCompletionStatusForDate(habit.id, date)
-                    if (completionStatus == null) {
+                val lastCompletionStatus = habitRepository.getLastCompletionStatus(habit.id)
+                if(lastCompletionStatus!!.date != currentDate){
+                    val startDate = lastCompletionStatus.date.plusDays(1)
+                    var date = startDate
+
+                    while (date.isBefore(currentDate) || date.isEqual(currentDate)) {
                         val newCompletionStatus = CompletionStatus(
                             habitId = habit.id,
                             date = date,
@@ -38,8 +39,8 @@ class HabitApplication : Application() {
                             id = 0
                         )
                         habitRepository.insertCompletionStatus(newCompletionStatus)
+                        date = date.plusDays(1)
                     }
-                    date = date.minusDays(1)
                 }
             }
         }
