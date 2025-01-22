@@ -62,7 +62,7 @@ fun ManageView(
                     modifier,
                     habit,
                     onEditClick = { onEditClick(habit.id) },
-                    onDeleteClick = { habit -> manageViewModel.deleteHabitItem(habit) }
+                    onDeleteClick = { manageViewModel.deleteHabitItem(habit) }
                 )
             }
         }

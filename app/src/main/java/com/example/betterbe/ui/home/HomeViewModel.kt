@@ -5,8 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
 import com.example.betterbe.data.HabitRepository
-import com.example.betterbe.data.db.CompletionStatusEntity
-import com.example.betterbe.data.db.HabitEntity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

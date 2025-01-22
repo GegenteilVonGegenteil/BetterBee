@@ -36,10 +36,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.betterbe.R
-import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.AppViewModelProvider
-import com.example.betterbe.ui.Routes
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay

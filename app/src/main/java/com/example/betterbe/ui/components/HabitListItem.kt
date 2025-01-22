@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
-import com.example.betterbe.data.db.HabitEntity
 
 @Composable
 fun HabitListItem(

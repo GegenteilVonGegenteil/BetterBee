@@ -2,16 +2,11 @@ package com.example.betterbe.ui.add
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
 import com.example.betterbe.data.HabitRepository
-import com.example.betterbe.data.db.CompletionStatusEntity
-import com.example.betterbe.data.db.HabitEntity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

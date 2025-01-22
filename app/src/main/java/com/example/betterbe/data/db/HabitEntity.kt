@@ -1,6 +1,5 @@
 package com.example.betterbe.data.db
 
-import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
