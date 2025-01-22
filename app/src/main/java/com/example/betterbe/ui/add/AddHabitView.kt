@@ -15,11 +15,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Hexagon
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Hexagon
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -51,6 +53,20 @@ fun AddHabitView(
 ) {
     val name by addHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by addHabitViewModel.color.collectAsStateWithLifecycle("yellow")
+
+    FloatingActionButton(
+        onClick = {  navController.popBackStack() },
+        modifier = Modifier
+            .padding(20.dp)
+            .size(40.dp),
+        containerColor = colorResource(R.color.bronco_50),
+        contentColor = colorResource(R.color.bronco_950)
+    ) {
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+            contentDescription = "Back"
+        )
+    }
 
     Column(
         modifier = Modifier
