@@ -15,7 +15,7 @@ class EditHabitViewModel(
     savedStateHandle: SavedStateHandle,
     private val repository: HabitRepository
 ) : ViewModel() {
-    private val habitId: Int = savedStateHandle["habitId"] ?: 0
+    val habitId: Int = savedStateHandle["habitId"] ?: 0
 
     private val _name = MutableStateFlow("")
     val name: StateFlow<String> = _name

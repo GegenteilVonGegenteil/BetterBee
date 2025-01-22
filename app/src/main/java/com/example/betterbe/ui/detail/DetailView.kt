@@ -77,7 +77,7 @@ fun DetailView(
     }
 
     FloatingActionButton(
-        onClick = {  navController.popBackStack() },
+        onClick = {  navController.navigate("home") },
         modifier = Modifier
             .padding(20.dp)
             .size(40.dp),
