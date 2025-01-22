@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.NavHostController
@@ -48,8 +49,8 @@ fun AddHabitView(
     navController: NavHostController,
     addHabitViewModel: AddHabitViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
-    val name by addHabitViewModel.name.observeAsState("")
-    val color by addHabitViewModel.color.observeAsState("yellow")
+    val name by addHabitViewModel.name.collectAsStateWithLifecycle("")
+    val color by addHabitViewModel.color.collectAsStateWithLifecycle("yellow")
 
     Column(
         modifier = Modifier
@@ -205,9 +206,7 @@ fun AddHabitView(
 
             Button(
                 onClick = {
-                    addHabitViewModel.addHabit(name.toString(), color.toString()) {
                         navController.navigate(Routes.Home.route)
-                    }
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.red_melon),

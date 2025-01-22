@@ -17,6 +17,7 @@ import androidx.navigation.navArgument
 import com.example.betterbe.ui.add.AddHabitView
 import com.example.betterbe.ui.components.BottomNavBar
 import com.example.betterbe.ui.detail.DetailView
+import com.example.betterbe.ui.edit.EditHabitView
 import com.example.betterbe.ui.home.HomeView
 import com.example.betterbe.ui.manage.ManageView
 
@@ -79,6 +80,15 @@ fun HabitApp(
             ) {
                 Column(Modifier.padding(innerPadding)) {
                     DetailView(navController)
+                }
+            }
+            composable(
+                route = Routes.Edit.route,
+                arguments = listOf(navArgument("habitId") { type = NavType.IntType })
+            ) {backStackEntry ->
+                val habitId = backStackEntry.arguments?.getInt("noteId") ?: return@composable
+                Column(Modifier.padding(innerPadding)) {
+                    EditHabitView(habitId, navController)
                 }
             }
         }
