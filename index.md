@@ -20,7 +20,7 @@ BetterBee would be used to help users who want to create a habit in their lives 
 ![MVP_Userflow](./mvpuserflow.png)
 
 ### Mockups
-![mockups](./mockups)
+![mockups](./mockups.png)
 
 ## User Test Planning
 ### Heuristic Evaluation
