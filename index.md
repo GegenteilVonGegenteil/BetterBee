@@ -17,10 +17,10 @@ BetterBee would be used to help users who want to create a habit in their lives 
 * All countries (but english speaking individuals)
 
 ### User Flow
-![MVP_Userflow](https://github.com/user-attachments/assets/6892e1fe-86dd-4f31-8731-c5ce98e873ae)
+![MVP_Userflow](./mvpuserflow.png)
 
 ### Mockups
-![mockups](https://github.com/user-attachments/assets/1d61f74c-9af2-439e-bc88-e63b43b3ef3a)
+![mockups](./mockups)
 
 ## User Test Planning
 ### Heuristic Evaluation
