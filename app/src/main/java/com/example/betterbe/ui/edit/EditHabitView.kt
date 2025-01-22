@@ -19,21 +19,25 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Hexagon
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Hexagon
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -57,9 +61,12 @@ fun EditHabitView(
 ) {
     val name by editHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by editHabitViewModel.color.collectAsStateWithLifecycle("")
+    val isValid by editHabitViewModel.isValid
+    var showDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     FloatingActionButton(
-        onClick = {  navController.popBackStack() },
+        onClick = {  showDialog = true },
         modifier = Modifier
             .padding(20.dp)
             .size(40.dp),
@@ -94,12 +101,19 @@ fun EditHabitView(
             value = name,
             onValueChange = { editHabitViewModel.onNameChange(it) },
             label = { Text("Name") },
+            isError = !isValid,
             modifier = Modifier
                 .width(380.dp)
                 .padding(horizontal = 10.dp, vertical = 5.dp)
-                .background(Color.White)
                 .align(Alignment.CenterHorizontally)
         )
+        if(!isValid) {
+            Text(
+                text = "Field cannot be empty",
+                color = colorResource(R.color.red_light),
+                modifier = Modifier.padding(horizontal = 30.dp)
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -226,7 +240,7 @@ fun EditHabitView(
 
             Button(
                 onClick = {
-                        navController.popBackStack()
+                    showDialog = true
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.red_melon),
@@ -241,7 +255,7 @@ fun EditHabitView(
             Button(
                 onClick = {
                     editHabitViewModel.updateHabit {
-                        navController.popBackStack()
+                       if(isValid) navController.popBackStack()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(
@@ -252,5 +266,27 @@ fun EditHabitView(
                 Text("Save")
             }
         }
+    }
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text("Are you sure?") },
+            text = { Text("Your progress will be lost.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDialog = false
+                        navController.popBackStack()
+                    }
+                ) {
+                    Text("Yes")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text("No")
+                }
+            }
+        )
     }
 }

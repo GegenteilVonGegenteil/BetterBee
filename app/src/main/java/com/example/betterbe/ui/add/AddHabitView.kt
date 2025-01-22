@@ -1,6 +1,7 @@
 package com.example.betterbe.ui.add
 
 import android.widget.Space
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +20,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Hexagon
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Hexagon
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
@@ -26,13 +28,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -55,9 +62,11 @@ fun AddHabitView(
     val name by addHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by addHabitViewModel.color.collectAsStateWithLifecycle("yellow")
     val isValid by addHabitViewModel.isValid
+    var showDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     FloatingActionButton(
-        onClick = {  navController.popBackStack() },
+        onClick = {  showDialog = true },
         modifier = Modifier
             .padding(20.dp)
             .size(40.dp),
@@ -96,7 +105,6 @@ fun AddHabitView(
             modifier = Modifier
                 .width(380.dp)
                 .padding(horizontal = 10.dp, vertical = 5.dp)
-                .background(Color.White)
                 .align(Alignment.CenterHorizontally)
         )
             if(!isValid) {
@@ -232,7 +240,7 @@ fun AddHabitView(
 
             Button(
                 onClick = {
-                        navController.navigate(Routes.Home.route)
+                    showDialog = true
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.red_melon),
@@ -260,5 +268,28 @@ fun AddHabitView(
                 Text("Save")
             }
         }
+    }
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text("Are you sure?") },
+            text = { Text("Your progress will be lost.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDialog = false
+                        navController.popBackStack()
+                    }
+                ) {
+                    Text("Yes")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text("No")
+                }
+            }
+        )
     }
 }
