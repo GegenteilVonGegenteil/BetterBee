@@ -22,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -51,6 +52,7 @@ fun AddHabitView(
 ) {
     val name by addHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by addHabitViewModel.color.collectAsStateWithLifecycle("yellow")
+    val isValid by addHabitViewModel.isValid
 
     Column(
         modifier = Modifier
@@ -74,12 +76,20 @@ fun AddHabitView(
             value = name,
             onValueChange = { addHabitViewModel.onNameChange(it) },
             label = { Text("Name") },
+            isError = !isValid,
             modifier = Modifier
                 .width(380.dp)
                 .padding(horizontal = 10.dp, vertical = 5.dp)
                 .background(Color.White)
                 .align(Alignment.CenterHorizontally)
         )
+            if(!isValid) {
+                Text(
+                    text = "Field cannot be empty",
+                    color = colorResource(R.color.red_light),
+                    modifier = Modifier.padding(horizontal = 30.dp)
+                )
+            }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -221,7 +231,9 @@ fun AddHabitView(
             Button(
                 onClick = {
                     addHabitViewModel.addHabit(name.toString(), color.toString()) {
+                        if(isValid) {
                         navController.navigate(Routes.Home.route)
+                    }
                     }
                 },
                 colors = ButtonDefaults.buttonColors(

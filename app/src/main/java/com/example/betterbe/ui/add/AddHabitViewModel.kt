@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.add
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,8 +27,12 @@ class AddHabitViewModel(
     private val _color = MutableStateFlow("yellow")
     val color: StateFlow<String> = _color
 
+    private val _isValid = mutableStateOf(true)
+    val isValid: State<Boolean> = _isValid
+
     fun onNameChange(newName: String) {
         _name.value = newName
+        _isValid.value = newName.isNotBlank()
     }
 
     fun onColorChange(newColor: String) {
@@ -34,17 +40,22 @@ class AddHabitViewModel(
     }
 
     fun addHabit(name: String, color:String, onHabitAdded: () -> Unit) {
-        viewModelScope.launch {
+        if(_name.value.isBlank()) {
+            _isValid.value = false
+        } else {
+            _isValid.value = true
+            viewModelScope.launch {
 
-            val newHabit = repository.addHabit(Habit(name, color))
-            repository.insertCompletionStatus(
-                CompletionStatus(
-                newHabit.toInt(),
-                LocalDate.now(),
-                false,
-                0
+                val newHabit = repository.addHabit(Habit(name, color))
+                repository.insertCompletionStatus(
+                    CompletionStatus(
+                        newHabit.toInt(),
+                        LocalDate.now(),
+                        false,
+                        0
+                    )
                 )
-            )
+            }
         }
 
         onHabitAdded()

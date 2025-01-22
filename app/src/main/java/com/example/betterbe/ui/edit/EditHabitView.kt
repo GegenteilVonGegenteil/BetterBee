@@ -210,7 +210,7 @@ fun EditHabitView(
 
             Button(
                 onClick = {
-                        navController.navigate(Routes.Home.route)
+                        navController.popBackStack()
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.red_melon),
