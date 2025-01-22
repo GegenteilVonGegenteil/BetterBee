@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.HabitRepository
 import com.example.betterbe.data.db.AppDatabase
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ class HabitApplication : Application() {
         HabitRepository(AppDatabase.getDatabase(this).habitDao(), AppDatabase.getDatabase(this).completionStatusDao())
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun checkAndCreateCompletionStatuses() {
         GlobalScope.launch {
             val habits = habitRepository.habits.first()
@@ -43,23 +45,3 @@ class HabitApplication : Application() {
         }
     }
 }
-
-// If WorkManager didn't kill scheduler
-/*class HabitApplication : Application(), Configuration.Provider {
-    lateinit var repository: HabitRepository
-    override fun onCreate() {
-        super.onCreate()
-        repository = habitRepository
-        scheduleDailyCompletionStatusWorker(this)
-    }
-
-    override fun getWorkManagerConfiguration(): Configuration =
-        Configuration.Builder()
-            .setMinimumLoggingLevel(Log.DEBUG)
-            .build()
-
-
-    val habitRepository by lazy {
-        HabitRepository(AppDatabase.getDatabase(this).habitDao(), AppDatabase.getDatabase(this).completionStatusDao())
-    }
-}*/

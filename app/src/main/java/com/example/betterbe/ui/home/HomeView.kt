@@ -61,7 +61,7 @@ fun HomeView(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier.fillMaxWidth()
         ) {
-            itemsIndexed(habitsWithStatus) { index, (habit, completionStatus) ->
+            itemsIndexed(habitsWithStatus) { _: Int, (habit, completionStatus) ->
                 HabitListItem(
                     habit,
                     completionStatus,

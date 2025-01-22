@@ -62,7 +62,7 @@ class HabitRepository(
 
     fun getCompletionStatusesForHabit(habitId: Int): Flow<List<CompletionStatus>> {
         val completionStates = completionStatusDao.getCompletionStatusForHabit(habitId)
-        return completionStates.map(){ completionStatesList ->
+        return completionStates.map{ completionStatesList ->
             completionStatesList.map { completionState ->
                 CompletionStatus(completionState.habitId, completionState.date, completionState.completed, completionState._id)
             }

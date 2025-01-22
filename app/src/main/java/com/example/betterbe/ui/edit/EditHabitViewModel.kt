@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class EditHabitViewModel(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val repository: HabitRepository
 ) : ViewModel() {
     private val habitId: Int = savedStateHandle["habitId"] ?: 0

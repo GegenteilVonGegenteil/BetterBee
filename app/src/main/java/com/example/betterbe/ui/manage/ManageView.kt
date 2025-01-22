@@ -57,7 +57,7 @@ fun ManageView(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier.fillMaxWidth()
         ) {
-            itemsIndexed(habits) { index, habit ->
+            itemsIndexed(habits) { _, habit ->
                 ManageListItem(
                     modifier,
                     habit,

@@ -17,7 +17,7 @@ data class HabitDetailUIState(
 )
 
 class DetailViewModel(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val habitRepository: HabitRepository
 ): ViewModel() {
     private val habitId: Int = savedStateHandle["habitId"] ?: 0

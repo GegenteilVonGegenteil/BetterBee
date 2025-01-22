@@ -244,7 +244,7 @@ fun AddHabitView(
 
             Button(
                 onClick = {
-                    addHabitViewModel.addHabit(name.toString(), color.toString()) {
+                    addHabitViewModel.addHabit(name, color) {
                         if(isValid) {
                         navController.navigate(Routes.Home.route)
                     }
