@@ -45,4 +45,10 @@ class DetailViewModel(
     fun getCompletionStatusesForHabit(habitId: Int): Flow<List<CompletionStatus>> {
        return habitRepository.getCompletionStatusesForHabit(habitId)
     }
+
+    fun deleteHabitItem(it: Habit) {
+        viewModelScope.launch {
+            habitRepository.deleteHabit(it)
+        }
+    }
 }

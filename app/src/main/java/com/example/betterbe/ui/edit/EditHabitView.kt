@@ -77,7 +77,7 @@ fun EditHabitView(
             .fillMaxSize()
     ) {
         Text(
-            text = "Add Habit",
+            text = "Edit Habit",
             style = TextStyle(
                 color = Color.White,
                 fontSize = 36.sp,
@@ -241,7 +241,7 @@ fun EditHabitView(
             Button(
                 onClick = {
                     editHabitViewModel.updateHabit {
-                        navController.navigate(Routes.Home.route)
+                        navController.popBackStack()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(

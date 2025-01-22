@@ -2,6 +2,7 @@ package com.example.betterbe.ui.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,8 +14,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.DeleteForever
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,7 +37,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.data.CompletionStatus
+import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.AppViewModelProvider
+import com.example.betterbe.ui.Routes
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
@@ -67,6 +73,11 @@ fun DetailView(
         }
     }
 
+    fun onDeleteClick(habit: Habit) {
+        detailViewModel.deleteHabitItem(habit)
+        navController.popBackStack()
+    }
+
     FloatingActionButton(
         onClick = {  navController.popBackStack() },
         modifier = Modifier
@@ -82,17 +93,50 @@ fun DetailView(
     }
 
     Column (Modifier.padding( 24.dp)) {
-        Text(state.habit.name,
-            style = androidx.compose.ui.text.TextStyle(
-                fontSize = 31.sp,
-                fontWeight = FontWeight(700),
-                color = colorResource(R.color.bronco_50)
-            )
-        )
-        Text(
-            "completed ${markedDates.size} of ${completionStatuses.size} days",
-            modifier = Modifier.padding(top = 8.dp)
-        )
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ){
+            Column {
+                Text(state.habit.name,
+                    style = androidx.compose.ui.text.TextStyle(
+                        fontSize = 31.sp,
+                        fontWeight = FontWeight(700),
+                        color = colorResource(R.color.bronco_50)
+                    )
+                )
+                Text(
+                    "completed ${markedDates.size} of ${completionStatuses.size} days",
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+            }
+            Row {
+                IconButton(
+                    modifier = Modifier.padding(2.dp),
+                    onClick = {navController.navigate("edit/${state.habit.id}")}
+                ) {
+                    Icon(
+                        imageVector =Icons.Outlined.Edit,
+                        contentDescription = "Edit Habit",
+                        tint = habitColor,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+                IconButton(
+                    modifier = Modifier.padding(2.dp),
+                    onClick = { onDeleteClick(state.habit)}
+                ) {
+                    Icon(
+                        imageVector =Icons.Filled.DeleteForever,
+                        contentDescription = "Delete Habit",
+                        tint = habitColor,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+            }
+        }
+
         Box(
 
             modifier = Modifier

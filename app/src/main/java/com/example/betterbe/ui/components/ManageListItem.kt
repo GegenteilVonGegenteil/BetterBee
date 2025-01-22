@@ -92,7 +92,6 @@ fun ManageListItem(
                     )
                 }
             }
-
         }
     }
 }
