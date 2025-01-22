@@ -85,10 +85,9 @@ fun HabitApp(
             composable(
                 route = Routes.Edit.route,
                 arguments = listOf(navArgument("habitId") { type = NavType.IntType })
-            ) {backStackEntry ->
-                val habitId = backStackEntry.arguments?.getInt("noteId") ?: return@composable
+            ) {
                 Column(Modifier.padding(innerPadding)) {
-                    EditHabitView(habitId, navController)
+                    EditHabitView( navController)
                 }
             }
         }

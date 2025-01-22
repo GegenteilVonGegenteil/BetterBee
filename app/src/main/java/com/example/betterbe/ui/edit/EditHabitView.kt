@@ -55,7 +55,6 @@ import com.example.betterbe.ui.add.AddHabitViewModel
 
 @Composable
 fun EditHabitView(
-    habitId: Int,
     navController: NavHostController,
     editHabitViewModel: EditHabitViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
