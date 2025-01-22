@@ -1,13 +1,16 @@
 package com.example.betterbe.ui.manage
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
@@ -31,7 +34,6 @@ fun ManageView(
     val totalCount = habits.size
 
     Column(modifier = Modifier.fillMaxSize()){
-
         Text(
             "Manage Habits",
             style = TextStyle(
@@ -50,7 +52,11 @@ fun ManageView(
             ),
             modifier = Modifier.padding(start = 20.dp, top = 5.dp, bottom = 30.dp)
         )
-        LazyColumn {
+        LazyColumn(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier.fillMaxWidth()
+        ) {
             itemsIndexed(habits) { index, habit ->
                 ManageListItem(
                     modifier,

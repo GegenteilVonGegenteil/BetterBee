@@ -15,11 +15,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Hexagon
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Hexagon
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -56,12 +58,26 @@ fun EditHabitView(
     val name by editHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by editHabitViewModel.color.collectAsStateWithLifecycle("")
 
+    FloatingActionButton(
+        onClick = {  navController.popBackStack() },
+        modifier = Modifier
+            .padding(20.dp)
+            .size(40.dp),
+        containerColor = colorResource(R.color.bronco_50),
+        contentColor = colorResource(R.color.bronco_950)
+    ) {
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+            contentDescription = "Back"
+        )
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
         Text(
-            text = "Add Habit",
+            text = "Edit Habit",
             style = TextStyle(
                 color = Color.White,
                 fontSize = 36.sp,
@@ -225,7 +241,7 @@ fun EditHabitView(
             Button(
                 onClick = {
                     editHabitViewModel.updateHabit {
-                        navController.navigate(Routes.Home.route)
+                        navController.popBackStack()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(

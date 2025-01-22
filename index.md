@@ -17,10 +17,10 @@ BetterBee would be used to help users who want to create a habit in their lives 
 * All countries (but english speaking individuals)
 
 ### User Flow
-![MVP_Userflow](https://github.com/user-attachments/assets/6892e1fe-86dd-4f31-8731-c5ce98e873ae)
+![MVP_Userflow](./mvpuserflow.png)
 
 ### Mockups
-![mockups](https://github.com/user-attachments/assets/1d61f74c-9af2-439e-bc88-e63b43b3ef3a)
+![mockups](./mockups.png)
 
 ## User Test Planning
 ### Heuristic Evaluation
@@ -28,11 +28,11 @@ System should generally be easy to use and navigate, due to its minimalistic des
 
 ### Initial Questions
 * How simple do the users find the app to be? (DV: Ease of use)
-* Would users use the app regularly/outside of testing it? (DV: Likelihood of usage)
+* How do users asses the usability of the app? (DV: Usability/SUS Score)
 * What features could be improved or added according to users? (DV: Features to improve/add)
 
 ### Methods
 * Test subject is given a phone with the app opened.
 * Test subject is asked to perform certain scenarios (Add Habit, Mark Habit, Unmark Habit, Edit Habit, Delete Habit) and is then given a SEQ. Test subject is also encouraged to think out loud while performing the tasks.
-* After tasks are done, the test subject is given a 5-point likert scale question about the likelihood of future use.
+* After the tasks, participants are given a SUS-Questionaire to fill out.
 * Afterwards, a short interview is conducted to assess potential improvements and wishes by test subject.
