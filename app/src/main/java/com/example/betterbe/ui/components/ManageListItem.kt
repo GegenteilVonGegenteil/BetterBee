@@ -31,6 +31,7 @@ import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.manage.ManageViewModel
+import com.example.betterbe.ui.theme.Jost
 
 @Composable
 fun ManageListItem(
@@ -73,6 +74,7 @@ fun ManageListItem(
             Text(
                 text = habit.name,
                 style = TextStyle(
+                    fontFamily = Jost,
                     fontSize = 25.sp,
                     fontWeight = FontWeight(400),
                     color = habitColor

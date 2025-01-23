@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
+import com.example.betterbe.ui.theme.Jost
 
 @Composable
 fun HabitListItem(
@@ -65,6 +66,7 @@ fun HabitListItem(
             Text(
                 text = habit.name,
                 style = TextStyle(
+                    fontFamily = Jost,
                     fontSize = 25.sp,
                     fontWeight = FontWeight(400),
                     color = if (completionStatus?.completed == true) habitColor else colorResource(R.color.bronco_950),

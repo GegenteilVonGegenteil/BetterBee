@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.components.ManageListItem
+import com.example.betterbe.ui.theme.Jost
 
 @Composable
 fun ManageView(
@@ -38,6 +39,7 @@ fun ManageView(
         Text(
             "Manage Habits",
             style = TextStyle(
+                fontFamily = Jost,
                 fontSize = 31.sp,
                 fontWeight = FontWeight(700),
                 color = colorResource(R.color.bronco_50)
@@ -47,6 +49,7 @@ fun ManageView(
         Text(
             "($totalCount habits)",
             style = TextStyle(
+                fontFamily = Jost,
                 fontSize = 20.sp,
                 fontWeight = FontWeight(400),
                 color = colorResource(R.color.bronco_50)

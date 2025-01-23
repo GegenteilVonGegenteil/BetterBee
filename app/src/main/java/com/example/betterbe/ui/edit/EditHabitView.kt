@@ -43,6 +43,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
+import com.example.betterbe.ui.theme.Jost
 
 @Composable
 fun EditHabitView(
@@ -78,7 +79,7 @@ fun EditHabitView(
             style = TextStyle(
                 color = Color.White,
                 fontSize = 36.sp,
-                fontFamily = FontFamily.SansSerif,
+                fontFamily = Jost,
                 fontWeight = FontWeight.W800
             ),
             modifier = Modifier
@@ -261,7 +262,7 @@ fun EditHabitView(
         AlertDialog(
             onDismissRequest = { showDialog = false },
             title = { Text("Are you sure?") },
-            text = { Text("Your progress will be lost.") },
+            text = { Text("Any unsaved progress will be lost.") },
             confirmButton = {
                 TextButton(
                     onClick = {

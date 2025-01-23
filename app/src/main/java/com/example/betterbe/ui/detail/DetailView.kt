@@ -42,6 +42,7 @@ import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.AppViewModelProvider
+import com.example.betterbe.ui.theme.Jost
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
@@ -103,6 +104,7 @@ fun DetailView(
             Column {
                 Text(state.habit.name,
                     style = androidx.compose.ui.text.TextStyle(
+                        fontFamily = Jost,
                         fontSize = 31.sp,
                         fontWeight = FontWeight(700),
                         color = colorResource(R.color.bronco_50)
@@ -199,6 +201,7 @@ fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates:
         Text(
             text = state.firstVisibleMonth.yearMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault()),
             style = androidx.compose.ui.text.TextStyle(
+                fontFamily = Jost,
                 fontSize = 20.sp,
                 fontWeight = FontWeight(500),
                 color = colorResource(R.color.bronco_50)
@@ -213,6 +216,7 @@ fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates:
                     textAlign = TextAlign.Center,
                     text = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault()),
                     style = androidx.compose.ui.text.TextStyle(
+                        fontFamily = Jost,
                         color = habitColor
                     )
                 )

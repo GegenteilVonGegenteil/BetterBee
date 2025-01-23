@@ -78,7 +78,6 @@ fun AddHabitView(
             style = TextStyle(
                 color = Color.White,
                 fontSize = 36.sp,
-                fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.W800
             ),
             modifier = Modifier

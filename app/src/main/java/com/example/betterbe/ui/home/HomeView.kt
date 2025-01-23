@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.components.HabitListItem
+import com.example.betterbe.ui.theme.Jost
 
 
 @Composable
@@ -41,6 +42,7 @@ fun HomeView(
         Text(
             "Today",
             style = TextStyle(
+                fontFamily = Jost,
                 fontSize = 31.sp,
                 fontWeight = FontWeight(700),
                 color = colorResource(R.color.bronco_50)
@@ -50,8 +52,9 @@ fun HomeView(
         Text(
             "($completedCount/$totalCount habits done)",
             style = TextStyle(
+                fontFamily = Jost,
                 fontSize = 20.sp,
-                fontWeight = FontWeight(400),
+                fontWeight = FontWeight(500),
                 color = colorResource(R.color.bronco_50)
                 ),
             modifier = Modifier.padding(start = 20.dp, top = 5.dp, bottom = 30.dp)
