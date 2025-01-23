@@ -73,7 +73,7 @@ fun DetailView(
 
     fun onDeleteClick(habit: Habit) {
         detailViewModel.deleteHabitItem(habit)
-        navController.popBackStack()
+        navController.navigate("home")
     }
 
     FloatingActionButton(
