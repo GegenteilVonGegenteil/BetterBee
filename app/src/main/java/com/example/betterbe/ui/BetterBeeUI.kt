@@ -62,7 +62,7 @@ fun HabitApp(
             composable(Routes.Manager.route) {
                 Column(Modifier.padding(innerPadding)) {
                     ManageView(
-                        Modifier
+                        Modifier,
                     ) { habitId ->
                         navController.navigate("edit/$habitId")
                     }
