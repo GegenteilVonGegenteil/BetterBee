@@ -10,11 +10,11 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = Yellow40,
     background = Brown80,
     surface = Brown80,
-    onPrimary = Yellow60,
-    onSecondary = Yellow40,
-    onTertiary = Yellow40,
-    onBackground = Yellow60,
-    onSurface = Yellow60
+    onPrimary = Brown10,
+    onSecondary = Brown10,
+    onTertiary = Brown10,
+    onBackground = Brown10,
+    onSurface = Brown10
 
 )
 
