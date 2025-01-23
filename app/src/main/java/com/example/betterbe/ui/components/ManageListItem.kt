@@ -46,7 +46,7 @@ fun ManageListItem(
     val habitColor = when (habit.color) {
         "red" -> colorResource(R.color.red_light)
         "orange" -> colorResource(R.color.orange_light)
-        "yellow" -> colorResource(R.color.orange_light)
+        "yellow" -> colorResource(R.color.yellow_light)
         "green" -> colorResource(R.color.green_light)
         "blue" -> colorResource(R.color.blue_light)
         "violet" -> colorResource(R.color.violet_light)
