@@ -41,7 +41,7 @@ THe biggest challenge for me was the reset, since we intended to do it on midnig
 I think the app meets the inital concept completely, as users are able to create habits with custom names and color selection and edit/delete them, as well as them being able to check them off every day, with them resetting every day. We expanded on that concept with the detail view, which also offers insight into the history of haabit completion.
 
 #### Further Improvements
-I think there are many ways to build onto the app. Most importantly, I think the abbility to set custom intervals for habits would be nice, as well as notifications to remind the user to do them. A way to sort the order of the tasks would also be a great way for further customization.
+I think there are many ways to build onto the app. Most importantly, I think the abbility to set custom intervals for habits would be nice, as well as notifications to remind the user to do them. A way to sort the order of the tasks would also be a great way for further customization. Lastly, a way to retroactively change entries would be helpfull.
 
 ## User Test Planning
 ### Heuristic Evaluation
@@ -60,9 +60,18 @@ System should generally be easy to use and navigate, due to its minimalistic des
 
 ### Results
 #### Participants
+* **Amount:** 8 participants
+*  **Gender:** 5 Men, 3 Woman
+* **Age:** 7 20-29, 2 30-39 (M = 25.25, SD = 6.45)
 
 #### Quantitative Evaluation
+* **SUS-Scores:** The app generally got favourable SUS-scores  (M = 93.75, SD = 5.98), with the minimum being 82.50 and the maximum 100.
+* **SEQ-Scores:** Users generally found finishing the tasks very easy, getting a SEQ-rating of 7 across the board, with the exception of Tasks 5 and 6 whih had one rating of 6 each, as well as Task 4 (Finding the deatil page), which got mixed scores, ranging from 2 to 7  M = 5.5, SD = 1.87).
+
+![Boxplot showing SEQ-Scores](./SEQBoxplot)
 
 #### Qualtitative Feedback
+Users generally said they liked our app. Two people mentioned that they would like a popup before deleting a habit. Most participants also expressed that clicking on the habit for a detail view wasn't intuitive. Otherwise, users mentioned some changes to design, adding a general calender and notifications, among other small asjustments.
 
 #### Changes to Product
+Based on the feedback, we changed that the habit colors persist when a habit is crossed out, added a delete popup, fixed a routing bug that would occur under specific circumstances by making the navigation more efficient and made habits clickable in the manageview to give users more ways to get to the detail view.
