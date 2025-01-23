@@ -67,7 +67,7 @@ fun HabitListItem(
                 style = TextStyle(
                     fontSize = 25.sp,
                     fontWeight = FontWeight(400),
-                    color = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950),
+                    color = if (completionStatus?.completed == true) habitColor else colorResource(R.color.bronco_950),
                     textDecoration = if (completionStatus?.completed == true) TextDecoration.LineThrough else TextDecoration.None
                     ),
                 modifier = Modifier.weight(3f)
@@ -80,7 +80,7 @@ fun HabitListItem(
                     modifier = Modifier.size(32.dp),
                     imageVector = if (completionStatus?.completed == false) Icons.Default.CheckBoxOutlineBlank else Icons.Outlined.CheckBox,
                     contentDescription = "CheckBox",
-                    tint = if (completionStatus?.completed == true) colorResource(R.color.bronco_100) else colorResource(R.color.bronco_950)
+                    tint = if (completionStatus?.completed == true) habitColor else colorResource(R.color.bronco_950)
                 )
             }
         }

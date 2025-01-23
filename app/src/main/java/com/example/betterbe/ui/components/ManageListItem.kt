@@ -27,6 +27,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.manage.ManageViewModel
@@ -35,6 +36,7 @@ import com.example.betterbe.ui.manage.ManageViewModel
 fun ManageListItem(
     modifier: Modifier,
     habit: Habit,
+    navController: NavController,
     onEditClick: () -> Unit,
     manageViewModel: ManageViewModel
 ) {
@@ -57,7 +59,8 @@ fun ManageListItem(
             containerColor = colorResource(R.color.bronco_900)
         ),
         modifier = modifier
-            .padding(10.dp)
+            .padding(10.dp),
+        onClick = {navController.navigate("detail/${habit.id}")}
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

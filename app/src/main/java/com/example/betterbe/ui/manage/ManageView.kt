@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.components.ManageListItem
@@ -27,6 +28,7 @@ import com.example.betterbe.ui.components.ManageListItem
 fun ManageView(
     modifier: Modifier,
     manageViewModel: ManageViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    navController: NavController,
     onEditClick: (Int) -> Unit
 ) {
 
@@ -60,6 +62,7 @@ fun ManageView(
                 ManageListItem(
                     modifier,
                     habit,
+                    navController,
                     onEditClick = { onEditClick(habit.id) },
                     manageViewModel
                 )
