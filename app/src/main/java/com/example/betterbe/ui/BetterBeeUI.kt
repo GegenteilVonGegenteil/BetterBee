@@ -63,6 +63,7 @@ fun HabitApp(
                 Column(Modifier.padding(innerPadding)) {
                     ManageView(
                         Modifier,
+                        navController = navController
                     ) { habitId ->
                         navController.navigate("edit/$habitId")
                     }
