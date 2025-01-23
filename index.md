@@ -68,7 +68,7 @@ System should generally be easy to use and navigate, due to its minimalistic des
 * **SUS-Scores:** The app generally got favourable SUS-scores  (M = 93.75, SD = 5.98), with the minimum being 82.50 and the maximum 100.
 * **SEQ-Scores:** Users generally found finishing the tasks very easy, getting a SEQ-rating of 7 across the board, with the exception of Tasks 5 and 6 whih had one rating of 6 each, as well as Task 4 (Finding the deatil page), which got mixed scores, ranging from 2 to 7  M = 5.5, SD = 1.87).
 
-![Boxplot showing SEQ-Scores](./SEQBoxplot)
+![Boxplot showing SEQ-Scores](./SEQBoxplot.png)
 
 #### Qualtitative Feedback
 Users generally said they liked our app. Two people mentioned that they would like a popup before deleting a habit. Most participants also expressed that clicking on the habit for a detail view wasn't intuitive. Otherwise, users mentioned some changes to design, adding a general calender and notifications, among other small asjustments.
