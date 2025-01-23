@@ -30,7 +30,7 @@ class DetailViewModel(
 
     val habitDetailUIState = _habitDetailUIState.asStateFlow()
 
-    init {
+    fun loadHabit() {
         viewModelScope.launch {
             val habit = habitRepository.getHabitById(habitId)
             _habitDetailUIState.update {

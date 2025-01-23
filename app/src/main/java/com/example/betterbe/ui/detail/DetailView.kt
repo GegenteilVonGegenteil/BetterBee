@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -32,7 +33,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.currentStateAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.betterbe.R
@@ -59,6 +62,15 @@ fun DetailView(
     val existingDates = completionStatuses.map {it.date}
     val markedDates = completionStatuses.filter { it.completed }.map { it.date }
 
+    val navigationState by navController.currentBackStackEntry!!.lifecycle.currentStateAsState()
+
+    LaunchedEffect(navigationState) {
+        if(navigationState == Lifecycle.State.RESUMED)
+        {
+            detailViewModel.loadHabit()
+        }
+    }
+
     val habitColor = when (state.habit.color) {
         "red" -> colorResource(R.color.red_light)
         "orange" -> colorResource(R.color.orange_light)
@@ -77,7 +89,7 @@ fun DetailView(
     }
 
     FloatingActionButton(
-        onClick = {  navController.navigate("home") },
+        onClick = {  navController.popBackStack() },
         modifier = Modifier
             .padding(20.dp)
             .size(40.dp),
