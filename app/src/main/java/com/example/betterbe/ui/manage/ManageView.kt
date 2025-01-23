@@ -34,8 +34,7 @@ fun ManageView(
 
     val habits by manageViewModel.habits.collectAsStateWithLifecycle()
     val totalCount = habits.size
-
-    Column(modifier = Modifier.fillMaxSize()){
+    Column(modifier = Modifier.fillMaxSize()) {
         Text(
             "Manage Habits",
             style = TextStyle(
@@ -65,7 +64,7 @@ fun ManageView(
                     habit,
                     navController,
                     onEditClick = { onEditClick(habit.id) },
-                    onDeleteClick = { manageViewModel.deleteHabitItem(habit) }
+                    manageViewModel
                 )
             }
         }

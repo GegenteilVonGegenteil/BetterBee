@@ -16,14 +16,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -61,6 +65,7 @@ fun DetailView(
     val completionStatuses by detailViewModel.getCompletionStatusesForHabit(state.habit.id).collectAsStateWithLifecycle(emptyList())
     val existingDates = completionStatuses.map {it.date}
     val markedDates = completionStatuses.filter { it.completed }.map { it.date }
+    var showDialog by remember { mutableStateOf(false) }
 
     val navigationState by navController.currentBackStackEntry!!.lifecycle.currentStateAsState()
 
@@ -84,8 +89,7 @@ fun DetailView(
     }
 
     fun onDeleteClick(habit: Habit) {
-        detailViewModel.deleteHabitItem(habit)
-        navController.navigate("home")
+        showDialog = true
     }
 
     FloatingActionButton(
@@ -161,6 +165,30 @@ fun DetailView(
             )
         }
 
+    }
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text("Delete this habit for all eternity?") },
+            text = { Text("This cannot be undone.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDialog = false
+                        detailViewModel.deleteHabitItem(state.habit)
+                        navController.navigate("home")
+                    }
+                ) {
+                    Text("Delete it")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text("No")
+                }
+            }
+        )
     }
 }
 

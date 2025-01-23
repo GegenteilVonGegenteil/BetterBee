@@ -263,8 +263,8 @@ fun AddHabitView(
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            title = { Text("Are you sure?") },
-            text = { Text("Your progress will be lost.") },
+            title = { Text("Leave habit?") },
+            text = { Text("Unsaved changes will be lost.") },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -272,12 +272,12 @@ fun AddHabitView(
                         navController.popBackStack()
                     }
                 ) {
-                    Text("Yes")
+                    Text("Leave")
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDialog = false }) {
-                    Text("No")
+                    Text("No, take me back")
                 }
             }
         )
