@@ -50,7 +50,6 @@ fun EditHabitView(
     navController: NavHostController,
     editHabitViewModel: EditHabitViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
-    val habitId = editHabitViewModel.habitId
     val name by editHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by editHabitViewModel.color.collectAsStateWithLifecycle("")
     val isValid by editHabitViewModel.isValid
@@ -246,7 +245,7 @@ fun EditHabitView(
             Button(
                 onClick = {
                     editHabitViewModel.updateHabit {
-                       if(isValid) navController.navigate("detail/$habitId")
+                       if(isValid) navController.popBackStack()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(
