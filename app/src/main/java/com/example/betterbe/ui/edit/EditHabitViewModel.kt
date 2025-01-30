@@ -1,7 +1,5 @@
 package com.example.betterbe.ui.edit
 
-// uses state and prefills the habit info on the edit page, then updates with new info
-
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -12,6 +10,8 @@ import com.example.betterbe.data.HabitRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+
+// uses state and prefills the habit info on the edit page, then updates with new info
 
 class EditHabitViewModel(
     savedStateHandle: SavedStateHandle,

@@ -1,7 +1,5 @@
 package com.example.betterbe.ui.components
 
-// styling/setup for each habit on home page, with completionStatus (done or not) changing the colours
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -28,6 +26,8 @@ import com.example.betterbe.R
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.theme.Jost
+
+// styling/setup for each habit on home page, with completionStatus (done or not) changing the colours
 
 @Composable
 fun HabitListItem(

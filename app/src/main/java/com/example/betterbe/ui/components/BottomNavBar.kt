@@ -1,7 +1,5 @@
 package com.example.betterbe.ui.components
 
-// Bottom Navigation Bar with links to Home, Add and Manage pages
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material.icons.outlined.AddBox
@@ -17,6 +15,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.betterbe.R
 import com.example.betterbe.ui.Routes
+
+// Bottom Navigation Bar with links to Home, Add and Manage pages
 
 @Composable
 fun BottomNavBar(navController: NavController) {

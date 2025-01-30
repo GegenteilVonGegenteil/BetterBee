@@ -1,7 +1,5 @@
 package com.example.betterbe.ui.manage
 
-// functionality comes from ManageListItem, otherwise basic style
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,6 +24,8 @@ import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.components.ManageListItem
 import com.example.betterbe.ui.theme.Jost
+
+// functionality comes from ManageListItem, otherwise basic style
 
 @Composable
 fun ManageView(

@@ -1,7 +1,5 @@
 package com.example.betterbe.data
 
-// communication tool between app and database
-
 import com.example.betterbe.data.db.CompletionStatusDao
 import com.example.betterbe.data.db.CompletionStatusEntity
 import com.example.betterbe.data.db.HabitDao
@@ -9,6 +7,9 @@ import com.example.betterbe.data.db.HabitEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
+
+// communication tool between app and database
+// converts the Entities into Objects and vice versa
 
 class HabitRepository(
     private val habitDao: HabitDao,

@@ -1,7 +1,5 @@
 package com.example.betterbe.ui.home
 
-// gets the habits for the home page list & sorts them in descending order
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.betterbe.data.CompletionStatus
@@ -10,6 +8,8 @@ import com.example.betterbe.data.HabitRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+
+// gets the habits for the home page list & sorts them in descending order
 
 class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
 

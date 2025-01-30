@@ -1,7 +1,5 @@
 package com.example.betterbe.ui.add
 
-// Add new habit view, with popups when user tries to leave without saved changes (showDialog)
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -47,6 +45,8 @@ import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.Routes
 import com.example.betterbe.ui.theme.Jost
+
+// Add new habit view, with popups when user tries to leave without saved changes (showDialog)
 
 @Composable
 fun AddHabitView(

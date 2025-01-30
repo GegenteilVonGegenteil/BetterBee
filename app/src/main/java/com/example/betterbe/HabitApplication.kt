@@ -1,7 +1,5 @@
 package com.example.betterbe
 
-// checks and create completion statuses before displaying on launch
-
 import android.app.Application
 import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.HabitRepository
@@ -11,6 +9,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+
+// checks and create completion statuses before displaying on launch
 
 class HabitApplication : Application() {
     override fun onCreate() {

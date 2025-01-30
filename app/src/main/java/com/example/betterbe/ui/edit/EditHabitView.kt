@@ -1,8 +1,5 @@
 package com.example.betterbe.ui.edit
 
-// Edit habit view, with popups when user tries to leave without saved changes (showDialog)
-// same as AddHabitView, but gets previous habit information (the state name and colour are prefilled by the viewModel)
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -46,6 +43,9 @@ import androidx.navigation.NavHostController
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.theme.Jost
+
+// Edit habit view, with popups when user tries to leave without saved changes (showDialog)
+// same as AddHabitView, but gets previous habit information (the state name and colour are prefilled by the viewModel)
 
 @Composable
 fun EditHabitView(

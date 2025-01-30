@@ -1,10 +1,11 @@
 package com.example.betterbe.data.db
 
-// object used in the data layer
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDate
+
+// object used in the data layer
+// CompletionStatusEntity is both the table within the room database as well as an object
 
 @Entity(tableName = "completion_status")
 data class CompletionStatusEntity(

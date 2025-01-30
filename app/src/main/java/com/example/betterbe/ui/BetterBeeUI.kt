@@ -1,7 +1,5 @@
 package com.example.betterbe.ui
 
-// the App itself, defines all routes and what is shown depending on route
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -22,6 +20,8 @@ import com.example.betterbe.ui.detail.DetailView
 import com.example.betterbe.ui.edit.EditHabitView
 import com.example.betterbe.ui.home.HomeView
 import com.example.betterbe.ui.manage.ManageView
+
+// the App itself, defines all routes and what is shown depending on route
 
 enum class Routes(val route: String) {
     Home("home"),

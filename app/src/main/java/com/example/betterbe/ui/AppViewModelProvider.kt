@@ -1,7 +1,5 @@
 package com.example.betterbe.ui
 
-// initialises all the viewModels and gives them the repository
-
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.initializer
@@ -12,6 +10,8 @@ import com.example.betterbe.ui.detail.DetailViewModel
 import com.example.betterbe.ui.edit.EditHabitViewModel
 import com.example.betterbe.ui.home.HomeViewModel
 import com.example.betterbe.ui.manage.ManageViewModel
+
+// initialises all the viewModels and gives them the repository
 
 object AppViewModelProvider {
 

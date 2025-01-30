@@ -1,8 +1,5 @@
 package com.example.betterbe.ui.home
 
-// Home page view, has the habit onClick for completion/undo
-// gets the habits with their completionStatus in pairs (val habitsWithStatus)
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +24,8 @@ import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.components.HabitListItem
 import com.example.betterbe.ui.theme.Jost
 
+// Home page view, has the habit onClick for completion/undo
+// gets the habits with their completionStatus in pairs (val habitsWithStatus)
 
 @Composable
 fun HomeView(

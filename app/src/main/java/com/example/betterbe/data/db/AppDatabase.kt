@@ -1,7 +1,5 @@
 package com.example.betterbe.data.db
 
-// database with converters for the local date
-
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -9,6 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import java.time.LocalDate
+
+// database with converters for the local date
 
 @Database(entities = [HabitEntity::class, CompletionStatusEntity::class], version = 3)
 @TypeConverters(Converters::class)

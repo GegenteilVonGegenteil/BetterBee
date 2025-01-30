@@ -1,13 +1,13 @@
 package com.example.betterbe.data.db
 
-// queries for db, specific to completionStatus
-
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
+
+// queries for db, specific to completionStatus
 
 @Dao
 interface CompletionStatusDao {
