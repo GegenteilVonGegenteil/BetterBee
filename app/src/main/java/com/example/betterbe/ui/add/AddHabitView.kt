@@ -46,6 +46,7 @@ import androidx.navigation.NavHostController
 import com.example.betterbe.R
 import com.example.betterbe.ui.AppViewModelProvider
 import com.example.betterbe.ui.Routes
+import com.example.betterbe.ui.theme.Jost
 
 @Composable
 fun AddHabitView(
@@ -78,6 +79,7 @@ fun AddHabitView(
         Text(
             text = "Add Habit",
             style = TextStyle(
+                fontFamily = Jost,
                 color = Color.White,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.W800
