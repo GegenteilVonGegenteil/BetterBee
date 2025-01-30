@@ -1,8 +1,5 @@
 package com.example.betterbe.ui.detail
 
-// overview for specific habit, with edit and delete buttons
-// completion rate out of days since habit was created & month overview
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -60,17 +57,27 @@ import java.time.YearMonth
 import java.time.format.TextStyle
 import java.util.Locale
 
+// overview for specific habit, with edit and delete buttons
+// completion rate out of days since habit was created & month overview
+
 @Composable
 fun DetailView(
     navController: NavController,
     detailViewModel: DetailViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
+    // the habit that is currently displayed
     val state by detailViewModel.habitDetailUIState.collectAsStateWithLifecycle()
+    // all completion Statuses for the habit
     val completionStatuses by detailViewModel.getCompletionStatusesForHabit(state.habit.id).collectAsStateWithLifecycle(emptyList())
+    // all dates for which a Completion Status exists (used for styling in the calender)
     val existingDates = completionStatuses.map {it.date}
+    // dates on which the habits was done (for styling and info)
     val markedDates = completionStatuses.filter { it.completed }.map { it.date }
+    // if the popup for deletion is shown
     var showDialog by remember { mutableStateOf(false) }
 
+    //  whenever the detail page is the current page in the Stack, the habit is fetched form the VM
+    // this means we can popBack after editing with the detail page showing the changes
     val navigationState by navController.currentBackStackEntry!!.lifecycle.currentStateAsState()
 
     LaunchedEffect(navigationState) {
@@ -80,6 +87,7 @@ fun DetailView(
         }
     }
 
+    // sets the habitColor depending on the current habits color
     val habitColor = when (state.habit.color) {
         "red" -> colorResource(R.color.red_light)
         "orange" -> colorResource(R.color.orange_light)
@@ -92,10 +100,12 @@ fun DetailView(
         }
     }
 
+    // Shows delete popup by setting the variable to true
     fun onDeleteClick(habit: Habit) {
         showDialog = true
     }
 
+    // Button to go back
     FloatingActionButton(
         onClick = {  navController.popBackStack() },
         modifier = Modifier
@@ -199,7 +209,7 @@ fun DetailView(
 }
 
 // integrated calendar for overview of habit completions
-//
+// uses kizitonwoses kalender component
 
 @Composable
 fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates: List<LocalDate>) {
@@ -218,6 +228,7 @@ fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates:
 
     Column {
         Text(
+            // shows the currently displayed month
             text = state.firstVisibleMonth.yearMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault()),
             style = androidx.compose.ui.text.TextStyle(
                 fontFamily = Jost,
@@ -228,6 +239,7 @@ fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates:
             modifier = Modifier.padding(20.dp)
         )
 
+        // Row for the Weekdays
         Row(modifier = Modifier.fillMaxWidth()) {
             for (dayOfWeek in daysOfWeek) {
                 Text(
@@ -242,6 +254,7 @@ fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates:
             }
         }
 
+        // the Calendar Component by kizitonwose, Day() component below
         HorizontalCalendar(
             state = state,
             dayContent = { day ->
@@ -253,10 +266,23 @@ fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates:
 
 @Composable
 fun Day(day: CalendarDay, markedDates: List<LocalDate>, habitColor: Color, existingDates: List<LocalDate>) {
+    // if the day is one where the habit was done
+    // styled by a filled circle
     val isMarked = day.date in markedDates
+
+    // if the Day is in the month currently displayed
+    // if day isn't in month, the number is desaturated
     val isInMonth = day.position == DayPosition.MonthDate
+
+    // the date on which the habit was created
     val earliestDate = existingDates.minOrNull() ?: LocalDate.now()
+
+    // days before the habit was created
+    // if the habit didn't exist, the number is desaturated
     val isBeforeEarliestDate = day.date.isBefore(earliestDate)
+
+    // today
+    // current day marked by empty circle
     val isToday = day.date.isEqual(LocalDate.now())
 
     Box(

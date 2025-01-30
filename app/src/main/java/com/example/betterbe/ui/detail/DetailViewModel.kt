@@ -22,8 +22,10 @@ class DetailViewModel(
     savedStateHandle: SavedStateHandle,
     private val habitRepository: HabitRepository
 ): ViewModel() {
+    // habitId from route
     private val habitId: Int = savedStateHandle["habitId"] ?: 0
 
+    // sets current Habit
     private val _habitDetailUIState = MutableStateFlow(
         HabitDetailUIState(
             Habit("", "", 0)
@@ -32,6 +34,7 @@ class DetailViewModel(
 
     val habitDetailUIState = _habitDetailUIState.asStateFlow()
 
+    // fetches the current habit
     fun loadHabit() {
         viewModelScope.launch {
             val habit = habitRepository.getHabitById(habitId)
@@ -41,10 +44,12 @@ class DetailViewModel(
         }
     }
 
+    //gets all associated Completion statuses
     fun getCompletionStatusesForHabit(habitId: Int): Flow<List<CompletionStatus>> {
        return habitRepository.getCompletionStatusesForHabit(habitId)
     }
 
+    //passes habit to be deleted to repository
     fun deleteHabitItem(it: Habit) {
         viewModelScope.launch {
             habitRepository.deleteHabit(it)

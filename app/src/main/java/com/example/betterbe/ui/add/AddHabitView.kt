@@ -53,9 +53,14 @@ fun AddHabitView(
     navController: NavHostController,
     addHabitViewModel: AddHabitViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
+
     val name by addHabitViewModel.name.collectAsStateWithLifecycle("")
     val color by addHabitViewModel.color.collectAsStateWithLifecycle("yellow")
+
+    // if field is empty
     val isValid by addHabitViewModel.isValid
+
+    // if popUp should be shown before canceling
     var showDialog by remember { mutableStateOf(false) }
 
     FloatingActionButton(

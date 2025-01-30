@@ -9,7 +9,7 @@ import java.time.LocalDate
 
 @Entity(tableName = "completion_status")
 data class CompletionStatusEntity(
-    val habitId: Int,
+     val habitId: Int,
     val date: LocalDate = LocalDate.now(),
     val completed: Boolean = false,
 
