@@ -56,6 +56,7 @@ fun EditHabitView(
     val color by editHabitViewModel.color.collectAsStateWithLifecycle("")
 
     // if field is empty
+
     val isValid by editHabitViewModel.isValid
 
     // if popUp should be shown before canceling
