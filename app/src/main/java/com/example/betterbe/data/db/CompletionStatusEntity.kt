@@ -1,5 +1,7 @@
 package com.example.betterbe.data.db
 
+// object used in the data layer
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDate

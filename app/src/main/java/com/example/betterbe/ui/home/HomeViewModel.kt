@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.home
 
+// gets the habits for the home page list & sorts them in descending order
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.betterbe.data.CompletionStatus

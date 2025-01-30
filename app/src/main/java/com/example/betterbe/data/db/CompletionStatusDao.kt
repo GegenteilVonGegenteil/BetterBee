@@ -1,5 +1,7 @@
 package com.example.betterbe.data.db
 
+// queries for db, specific to completionStatus
+
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

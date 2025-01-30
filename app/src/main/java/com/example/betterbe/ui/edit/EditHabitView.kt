@@ -1,5 +1,8 @@
 package com.example.betterbe.ui.edit
 
+// Edit habit view, with popups when user tries to leave without saved changes (showDialog)
+// same as AddHabitView, but gets previous habit information (the state name and colour are prefilled by the viewModel)
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -257,6 +260,8 @@ fun EditHabitView(
             }
         }
     }
+
+    // popup for when user tries to cancel or leave page
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },

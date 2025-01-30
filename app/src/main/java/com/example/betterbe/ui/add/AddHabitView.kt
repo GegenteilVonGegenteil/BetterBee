@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.add
 
+// Add new habit view, with popups when user tries to leave without saved changes (showDialog)
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -259,6 +261,7 @@ fun AddHabitView(
         }
     }
 
+    // popup for unsaved changes when user either presses back button/cancel or tries to leave the page
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },

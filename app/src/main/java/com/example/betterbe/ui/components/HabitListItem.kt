@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.components
 
+// styling/setup for each habit on home page, with completionStatus (done or not) changing the colours
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding

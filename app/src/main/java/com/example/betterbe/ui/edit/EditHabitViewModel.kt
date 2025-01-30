@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.edit
 
+// uses state and prefills the habit info on the edit page, then updates with new info
+
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle

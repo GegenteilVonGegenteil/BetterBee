@@ -1,5 +1,7 @@
 package com.example.betterbe.ui
 
+// initialises all the viewModels and gives them the repository
+
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.initializer

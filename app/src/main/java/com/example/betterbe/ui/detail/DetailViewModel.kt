@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.detail
 
+// has functions for getting completion statuses for habits & deleting habits
+
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

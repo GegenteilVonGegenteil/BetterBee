@@ -1,5 +1,7 @@
 package com.example.betterbe.data.db
 
+// queries used for the database
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

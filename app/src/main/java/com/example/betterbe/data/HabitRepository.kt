@@ -1,5 +1,7 @@
 package com.example.betterbe.data
 
+// communication tool between app and database
+
 import com.example.betterbe.data.db.CompletionStatusDao
 import com.example.betterbe.data.db.CompletionStatusEntity
 import com.example.betterbe.data.db.HabitDao
@@ -50,15 +52,6 @@ class HabitRepository(
             completionStatusDao.updateCompletionStatus(completionStatus.id, !completionStatus.completed)
         }
     }
-
-    suspend fun getCompletionStatusForDate(habitId: Int, date: LocalDate): CompletionStatus? {
-        val completionStatusEntity = completionStatusDao.getCompletionStatusForDate(habitId, date)
-
-        return completionStatusEntity?.let {
-            CompletionStatus(it.habitId, it.date, it.completed, it._id)
-        }
-    }
-
 
     fun getCompletionStatusesForHabit(habitId: Int): Flow<List<CompletionStatus>> {
         val completionStates = completionStatusDao.getCompletionStatusForHabit(habitId)

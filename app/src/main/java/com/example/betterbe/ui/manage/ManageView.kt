@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.manage
 
+// functionality comes from ManageListItem, otherwise basic style
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

@@ -22,6 +22,7 @@ class AddHabitViewModel(
     private val _color = MutableStateFlow("yellow")
     val color: StateFlow<String> = _color
 
+    // isValid = whether any text is there, just to prevent empty fields
     private val _isValid = mutableStateOf(true)
     val isValid: State<Boolean> = _isValid
 
@@ -34,6 +35,7 @@ class AddHabitViewModel(
         _color.value = newColor
     }
 
+    // check for valid field (not empty), then if valid goes through with creating the habit
     fun addHabit(name: String, color:String, onHabitAdded: () -> Unit) {
         if(_name.value.isBlank()) {
             _isValid.value = false

@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.components
 
+// Bottom Navigation Bar with links to Home, Add and Manage pages
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material.icons.outlined.AddBox

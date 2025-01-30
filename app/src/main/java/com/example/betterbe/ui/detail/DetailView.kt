@@ -1,5 +1,8 @@
 package com.example.betterbe.ui.detail
 
+// overview for specific habit, with edit and delete buttons
+// completion rate out of days since habit was created & month overview
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -169,6 +172,7 @@ fun DetailView(
 
     }
 
+    // popup for when delete is pressed
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
@@ -193,6 +197,9 @@ fun DetailView(
         )
     }
 }
+
+// integrated calendar for overview of habit completions
+//
 
 @Composable
 fun CalendarView(markedDates: List<LocalDate>, habitColor: Color, existingDates: List<LocalDate>) {

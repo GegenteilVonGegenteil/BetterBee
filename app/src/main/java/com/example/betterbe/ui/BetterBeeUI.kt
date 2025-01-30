@@ -1,5 +1,7 @@
 package com.example.betterbe.ui
 
+// the App itself, defines all routes and what is shown depending on route
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding

@@ -1,5 +1,7 @@
 package com.example.betterbe.ui.components
 
+// styling/setup for each habit on manage page, with edit and delete buttons on each habit
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -107,6 +109,8 @@ fun ManageListItem(
             }
         }
     }
+
+    // popup for when delete is clicked
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
