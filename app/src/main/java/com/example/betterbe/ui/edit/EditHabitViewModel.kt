@@ -17,6 +17,7 @@ class EditHabitViewModel(
     savedStateHandle: SavedStateHandle,
     private val repository: HabitRepository
 ) : ViewModel() {
+    // habitId from the router
     val habitId: Int = savedStateHandle["habitId"] ?: 0
 
     private val _name = MutableStateFlow("")
@@ -25,7 +26,7 @@ class EditHabitViewModel(
     private val _color = MutableStateFlow("yellow")
     val color: StateFlow<String> = _color
 
-
+    // if the Textfield is empty
     private val _isValid = mutableStateOf(true)
     val isValid: State<Boolean> = _isValid
 
@@ -37,11 +38,13 @@ class EditHabitViewModel(
         }
     }
 
+    // called whenever Textfield value changes
     fun onNameChange(newName: String) {
         _name.value = newName
         _isValid.value = newName.isNotBlank()
     }
 
+    // called whenever Textfield value changes
     fun onColorChange(newColor: String) {
         _color.value = newColor
     }

@@ -27,7 +27,7 @@ import com.example.betterbe.data.CompletionStatus
 import com.example.betterbe.data.Habit
 import com.example.betterbe.ui.theme.Jost
 
-// styling/setup for each habit on home page, with completionStatus (done or not) changing the colours
+// styling/setup for each habit on home page, with last CompletionStatus (done or not) changing the colours
 
 @Composable
 fun HabitListItem(

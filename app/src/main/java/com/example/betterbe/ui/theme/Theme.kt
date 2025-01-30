@@ -4,6 +4,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 
+//Custom theme and color scheme
 private val DarkColorScheme = darkColorScheme(
     primary = Yellow40,
     secondary = Yellow40,

@@ -25,7 +25,6 @@ import com.example.betterbe.ui.components.HabitListItem
 import com.example.betterbe.ui.theme.Jost
 
 // Home page view, has the habit onClick for completion/undo
-// gets the habits with their completionStatus in pairs (val habitsWithStatus)
 
 @Composable
 fun HomeView(
@@ -34,13 +33,17 @@ fun HomeView(
     onHabitClick: (Int) -> Unit
 ) {
 
+    // gets the habits with their completionStatus in pairs (val habitsWithStatus)
     val habitsWithStatus by homeViewModel.habitsWithCompletionStatus.collectAsStateWithLifecycle()
+
+    // how many of the tasks were done today
     val completedCount = homeViewModel.getCompletedHabitsCount(habitsWithStatus)
+
+    // how may habits exist
     val totalCount = habitsWithStatus.size
 
 
     Column(modifier = Modifier.fillMaxSize()){
-
         Text(
             "Today",
             style = TextStyle(

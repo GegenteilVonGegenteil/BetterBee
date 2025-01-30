@@ -2,7 +2,7 @@ package com.example.betterbe.data
 
 import java.time.LocalDate
 
-// representation for the CompletionStatusEntity within the application itself
+// object representing the CompletionStatusEntity within the application itself
 
 data class CompletionStatus (
     val habitId: Int,

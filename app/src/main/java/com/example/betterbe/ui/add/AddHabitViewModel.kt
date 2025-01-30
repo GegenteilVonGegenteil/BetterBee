@@ -26,11 +26,13 @@ class AddHabitViewModel(
     private val _isValid = mutableStateOf(true)
     val isValid: State<Boolean> = _isValid
 
+    // called whenever Textfield value changes
     fun onNameChange(newName: String) {
         _name.value = newName
         _isValid.value = newName.isNotBlank()
     }
 
+    // called whenever Textfield value changes
     fun onColorChange(newColor: String) {
         _color.value = newColor
     }
@@ -54,7 +56,6 @@ class AddHabitViewModel(
                 )
             }
         }
-
         onHabitAdded()
     }
 }

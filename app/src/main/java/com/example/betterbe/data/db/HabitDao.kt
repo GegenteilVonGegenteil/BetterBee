@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
-// queries used for the database
+// queries used for the database specific to the HabitEntity
 
 @Dao
 interface HabitDao {

@@ -33,6 +33,7 @@ abstract class AppDatabase : RoomDatabase() {
     }
 }
 
+// Converters needed for  CompletionStatusEntity.date
 class Converters {
     @TypeConverter
     fun fromLocalDate(date: LocalDate?): String? {

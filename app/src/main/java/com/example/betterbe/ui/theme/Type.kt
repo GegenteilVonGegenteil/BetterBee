@@ -9,12 +9,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.betterbe.R
 
+//custom font used in app
 val Jost = FontFamily(
     Font(R.font.jost_regular, FontWeight.Normal, FontStyle.Normal),
     Font(R.font.jost_bold, FontWeight.Bold, FontStyle.Normal)
 )
 
-// Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = Jost,

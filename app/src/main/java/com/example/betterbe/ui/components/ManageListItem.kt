@@ -43,6 +43,7 @@ fun ManageListItem(
     onEditClick: () -> Unit,
     manageViewModel: ManageViewModel
 ) {
+    // for the delete PopUp to be displayed
     var showDialog by remember { mutableStateOf(false) }
 
     val habitColor = when (habit.color) {

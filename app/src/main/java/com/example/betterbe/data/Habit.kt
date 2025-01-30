@@ -1,6 +1,6 @@
 package com.example.betterbe.data
 
-// representation for the HabitEntity within the application itself
+// object representing the HabitEntity within the application itself
 
 data class Habit(
     val name: String,

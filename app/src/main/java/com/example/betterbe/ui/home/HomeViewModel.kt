@@ -9,10 +9,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-// gets the habits for the home page list & sorts them in descending order
-
 class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
 
+    // all the habits paired with their current completionStatus for the day
     private val _habitsWithCompletionStatus = MutableStateFlow<List<Pair<Habit, CompletionStatus?>>>(emptyList())
     val habitsWithCompletionStatus: StateFlow<List<Pair<Habit, CompletionStatus?>>>
         get() = _habitsWithCompletionStatus
@@ -21,6 +20,7 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
         loadHabits()
     }
 
+    // called on init and whenever a status changes
     private fun loadHabits() {
         viewModelScope.launch {
             repository.habits.collect { habits ->
@@ -39,6 +39,7 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
         }
     }
 
+    // counts how many of the habits were done today
     fun getCompletedHabitsCount(habitsWithStatus: List<Pair<Habit, CompletionStatus?>>): Int {
         return habitsWithStatus.count { it.second?.completed == true }
     }
