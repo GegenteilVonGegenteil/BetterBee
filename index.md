@@ -4,7 +4,7 @@
 
 ## Description
 BetterBee: An application for tracking daily habits. Users can create, edit, delete the habits they want to keep track of in their day-to-day. 
-The database is prepopulated with a few example habits for users to have a starting point and change as they wish. Habits can be checkmarked as done and are reset daily.
+Habits can be checkmarked as done and are reset daily.
 
 ## App Development
 ### Use case
@@ -32,16 +32,31 @@ BetterBee would be used to help users who want to create a habit in their lives 
 ## Reflection
 ### Kaja
 #### Contribution
-Data Layer, Reset, Home/Manage/Detail View, User Testing
+Data Layer, Reset, Home/Manage/Detail Pages, User Testing, User Test Plan
 
 #### Challenges
-THe biggest challenge for me was the reset, since we intended to do it on midnight with a WorkManager. While the it theoretically worked as intended when the app was open on reset, the phone would kill the schedueler upon closing the app, removing the purpose of the WorkManager. After two days of debugging and halp from lecutrers, we still couldn't figure out why this behavior was happening, as it seemed to be an issue with android, not the app. So we decided to do it differently, which wasn't hard to code, but not our intended way and also meant we didn't expand the WorkManager to do Notifications.
+The biggest challenge for me was the reset, since we intended to do it at midnight with a WorkManager. While the it theoretically worked as intended, when the app was open on reset, the phone would kill the scheduler upon closing the app, removing the purpose of the WorkManager. After two days of debugging and help from lecturers, we still couldn't figure out why this behavior was happening, as it seemed to be an issue with android, not the app. So we decided to do it differently, which wasn't hard to code, but not our intended way and also meant we didn't expand the WorkManager to do Notifications.
 
 #### Meeting the initial concept
-I think the app meets the inital concept completely, as users are able to create habits with custom names and color selection and edit/delete them, as well as them being able to check them off every day, with them resetting every day. We expanded on that concept with the detail view, which also offers insight into the history of haabit completion.
+I think the app meets the inital concept completely, as users are able to create habits with custom names and color selection and edit/delete them, as well as them being able to check them off every day, with them resetting every day. We expanded on that concept with the detail view, which also offers insight into the history of habit completion.
 
 #### Further Improvements
-I think there are many ways to build onto the app. Most importantly, I think the abbility to set custom intervals for habits would be nice, as well as notifications to remind the user to do them. A way to sort the order of the tasks would also be a great way for further customization. Lastly, a way to retroactively change entries would be helpfull.
+I think there are many ways to build onto the app. Most importantly, I think the ability to set custom intervals for habits would be nice, as well as notifications to remind the user to do them. A way to sort the order of the tasks would also be a great way for further customization. Lastly, a way to retroactively change entries would be helpful.
+
+### Zsanett
+#### Contribution
+Design Director, logo design, Add/Edit Pages, Presentations, User Test Plan, code commenting
+
+#### Challenges
+The colour buttons for a habit were something I initially wanted to do in the form of a menu, with the colours all being visible as they are. I also tried it as radio buttons, and landed on them being buttons in a row. I don't know still what is standard or if there are accessibility issues with this format, and whether there is a better way of doing this. What I ended up with fits the design plan, though.
+There were also some challenges with git, as the initial 2 repositories did not work, and then wit the one that did work, my commits were registered under another account due to saved data on the borrowed laptop I worked from.
+The main issue overall was figuring out everything in Android/Kotlin; Planning the code, restructuring and changing how we did things based on the development and things not working over the course of the first week and what new information we got about best practice. We had to go back and forth with some things and be adaptable to changing plans a few times; Luckily, we work well together and could plan code together well with my partner, and with the help of tutors.
+
+#### Meeting the initial concept
+The initial concept was met completely, we had our MVP at the start met and added slightly more to it. Our MVP included habits that can be checked off, reset every day, custom names for them and choosing a colour for each (CRUD). What we did above that is the splash screen when launching the app, and the detail view of the app with a calendar history and overview of the completion rate.
+
+#### Further Improvements
+There are many ways to add to this app, most of which we have already discussed we may continue working on in the future. The main ones would be the possibility to have habits be for different intervals (weekly, monthly), adding notifications, being able to reorder the habits in the manage page. Retroactively changing the completion of the habits on days past could be added too, along with statistics being more extensive and visualised on the detail page. These are the main/first improvements, with there being a last one that is more extensive: We discussed adding 'progress' indicators: that when a habit is in the state of being done e.g. 90% of the time or above, there would be a visual indicating that, such as a bee or a change in how the habit looks.
 
 ## User Test Planning
 ### Heuristic Evaluation
@@ -61,7 +76,7 @@ System should generally be easy to use and navigate, due to its minimalistic des
 ### Results
 #### Participants
 * **Amount:** 8 participants
-*  **Gender:** 5 Men, 3 Woman
+*  **Gender:** 5 Men, 3 Women
 * **Age:** 7 20-29, 2 30-39 (M = 25.25, SD = 6.45)
 
 #### Quantitative Evaluation
@@ -71,7 +86,7 @@ System should generally be easy to use and navigate, due to its minimalistic des
 ![Boxplot showing SEQ-Scores](./SEQBoxplot.png)
 
 #### Qualtitative Feedback
-Users generally said they liked our app. Two people mentioned that they would like a popup before deleting a habit. Most participants also expressed that clicking on the habit for a detail view wasn't intuitive. Otherwise, users mentioned some changes to design, adding a general calender and notifications, among other small asjustments.
+Users generally said they liked our app. Two people mentioned that they would like a popup before deleting a habit. Most participants also expressed that clicking on the habit for a detail view wasn't intuitive. Otherwise, users mentioned some changes to design, adding a general calendar and notifications, among other small adjustments.
 
 #### Changes to Product
 Based on the feedback, we changed that the habit colors persist when a habit is crossed out, added a delete popup, fixed a routing bug that would occur under specific circumstances by making the navigation more efficient and made habits clickable in the manageview to give users more ways to get to the detail view.
